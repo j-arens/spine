@@ -1,9 +1,8 @@
 <?php
 
-namespace App;
-use Roots\Sage\Asset;
-use Roots\Sage\Assets\JsonManifest;
-use Roots\Sage\Template;
+include '../lib/Asset.php';
+include '../lib/Assets/JsonManifest.php';
+include '../lib/Template.php';
 
 function template($layout = 'base') {
   return Template::$instances[$layout];

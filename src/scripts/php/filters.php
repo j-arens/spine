@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
-use Roots\Sage\Template;
-use Roots\Sage\Template\Wrapper;
+include '../lib/Template.php';
+include '../lib/Template/Wrapper.php';
 
 /**
  * Add <body> classes

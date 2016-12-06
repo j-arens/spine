@@ -1,7 +1,6 @@
 <?php
 
-namespace App;
-use Roots\Sage\Template;
+include '../lib/Template.php';
 
 /**
  * Theme assets

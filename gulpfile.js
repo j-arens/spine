@@ -72,7 +72,8 @@ const targets = [
   './src/functions.php',
   './src/index.php',
   './src/scripts/php/**/*',
-  './src/templates/**/*'
+  './src/templates/**/*',
+  './src/lib/**/*'
 ];
 
 gulp.task('migrate', () => gulp.src(targets, {base: './src'})

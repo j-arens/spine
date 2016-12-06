@@ -1,0 +1,17 @@
+/*
+Theme Name:         Spine Starter Theme
+Theme URI:          http://diocesan.com
+Description:        Spine is a WordPress starter theme.
+Version:            0.0.1alpha
+Author:             Josh Arens
+Author URI:         https://github.com/j-arens
+Text Domain:        spine
+License:            MIT License
+License URI:        http://opensource.org/licenses/MIT
+*/
+
+@import 'global/_index.css';
+@import 'vendor/_index.css';
+@import 'typography/_index.css';
+@import 'components/_index.css';
+@import 'layouts/_index.css';

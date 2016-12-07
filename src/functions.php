@@ -49,7 +49,8 @@ $spine_includes = [
   '/scripts/php/clean-up.php',
   '/scripts/php/nice-search.php',
   '/scripts/php/disable-asset-ver.php',
-  '/scripts/php/disable-trackbacks.php'
+  '/scripts/php/disable-trackbacks.php',
+  '/scripts/php/disable-wpcustomizer.php'
 ];
 
 array_walk($spine_includes, function ($file) {

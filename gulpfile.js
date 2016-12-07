@@ -24,11 +24,11 @@ const webpack = require('webpack-stream');
 * Styles
 */
 const plugins = [
+  cssnext(),
+  lost(),
   smartImport({
     from: './src/styles/main.css'
-  }),
-  lost(),
-  cssnext(),
+  })
 ];
 
 gulp.task('styles', () => gulp.src('./src/styles/**/*.css')

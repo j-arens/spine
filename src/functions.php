@@ -43,7 +43,8 @@ add_action('after_switch_theme', function () {
 $spine_includes = [
   '/scripts/php/helpers.php',
   '/scripts/php/setup.php',
-  '/scripts/php/filters.php'
+  '/scripts/php/filters.php',
+  '/scripts/php/jquery-cdn.php'
 ];
 
 array_walk($spine_includes, function ($file) {

@@ -45,7 +45,8 @@ $spine_includes = [
   '/scripts/php/setup.php',
   '/scripts/php/filters.php',
   '/scripts/php/jquery-cdn.php',
-  '/scripts/php/js-to-footer.php'
+  '/scripts/php/js-to-footer.php',
+  '/scripts/php/clean-up.php'
 ];
 
 array_walk($spine_includes, function ($file) {

@@ -36,7 +36,7 @@ gulp.task('styles', () => gulp.src('./src/styles/**/*.css')
     .pipe(postcss(plugins))
     .pipe(concat('style.css'))
     .pipe(autoprefixer({browsers: ['last 2 versions']}))
-    .pipe(nano({discardComments: {removeAll: true}}))
+    .pipe(nano({discardComments: false}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./spine'))
 );

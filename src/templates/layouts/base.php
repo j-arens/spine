@@ -1,6 +1,6 @@
 <?php
-  include_once(get_template_directory() . '/lib/Template.php');
-  include_once(get_template_directory() . '/scripts/php/helpers.php');
+  include_once(get_stylesheet_directory() . '/lib/Template.php');
+  include_once(get_stylesheet_directory() . '/scripts/php/helpers.php');
  ?>
 
 <!doctype html>

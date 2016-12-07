@@ -1,7 +1,7 @@
 <?php
 
-include_once(get_template_directory() . '/lib/Template.php');
-include_once(get_template_directory() . '/lib/Template/Wrapper.php');
+include_once(get_stylesheet_directory() . '/lib/Template.php');
+include_once(get_stylesheet_directory() . '/lib/Template/Wrapper.php');
 
 /**
  * Add <body> classes

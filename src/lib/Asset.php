@@ -1,6 +1,6 @@
 <?php
 
-include_once(get_template_directory() . '/lib/Assets/ManifestInterface.php');
+include_once(get_stylesheet_directory() . '/lib/Assets/ManifestInterface.php');
 
 /**
 * Class Template

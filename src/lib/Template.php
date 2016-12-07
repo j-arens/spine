@@ -1,7 +1,7 @@
 <?php
 
-include_once(get_template_directory() . '/lib/template/Partial.php');
-include_once(get_template_directory() . '/lib/template/WrapperInterface.php');
+include_once(get_stylesheet_directory() . '/lib/template/Partial.php');
+include_once(get_stylesheet_directory() . '/lib/template/WrapperInterface.php');
 
 class Template {
 

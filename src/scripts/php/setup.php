@@ -6,8 +6,8 @@ include_once(get_stylesheet_directory() . '/lib/Template.php');
  * Theme assets
  */
  add_action('wp_enqueue_scripts', function () {
-     wp_enqueue_style('theme_style', get_stylesheet_directory() . 'style.css', false, null);
-     wp_enqueue_script('theme_js', get_stylesheet_directory() . '/scripts/js/bundle.js', ['jquery'], null, true);
+     wp_enqueue_style('spine-style', get_stylesheet_directory() . 'style.css', false, null);
+     wp_enqueue_script('spine-js', get_stylesheet_directory() . '/scripts/js/bundle.js', ['jquery'], null, true);
  }, 100);
 
 /**

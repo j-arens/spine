@@ -1,18 +1,16 @@
 {
   "root": true,
-  "extends": "airbnb",
+  "extends": ["eslint:recommended", "plugin:import/warnings"],
   "globals": {
     "wp": true
   },
   "env": {
-    "es6": true,
     "amd": true,
     "browser": true,
     "jquery": true,
     "node": true
   },
   "rules": {
-    "react/require-extension": 0,
-    "import/extensions": [1, { "js": "never" }]
+    # "import/extensions": [1, { "js": "never" }]
   }
 }

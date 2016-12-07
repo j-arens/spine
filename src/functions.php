@@ -41,9 +41,9 @@ add_action('after_switch_theme', function () {
  */
 
 $spine_includes = [
-  '/scripts/php/setup',
-  '/scripts/php/filters',
-  '/scripts/php/helpers'
+  '/scripts/php/helpers.php',
+  '/scripts/php/setup.php',
+  '/scripts/php/filters.php'
 ];
 
 array_walk($spine_includes, function ($file) {

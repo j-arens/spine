@@ -1,13 +1,13 @@
 <?php
 
-include 'Assets/ManifestInterface.php';
+include_once(get_template_directory() . '/lib/Assets/ManifestInterface.php');
 
 /**
 * Class Template
 */
 class Asset {
 
-  public static $dist = '/dist';
+  public static $dist = '/spine';
   protected $manifest;
   protected $asset;
   protected $dir;

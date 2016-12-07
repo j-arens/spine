@@ -1,10 +1,15 @@
+<?php
+  include_once(get_template_directory() . '/lib/Template.php');
+  include_once(get_template_directory() . '/scripts/php/helpers.php');
+ ?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
   <?php get_template_part('partials/head'); ?>
   <body <?php body_class(); ?>>
     <!--[if IE]>
       <div class="alert alert-warning">
-        <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage'); ?>
+        <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'spine'); ?>
       </div>
     <![endif]-->
     <?php
@@ -14,11 +19,11 @@
     <div class="wrap container" role="document">
       <div class="content row">
         <main class="main">
-          <?php include App\template()->main(); ?>
+          <?php template()->main(); ?>
         </main>
-        <?php if (App\display_sidebar()) : ?>
+        <?php if (display_sidebar()) : ?>
           <aside class="sidebar">
-            <?php App\template_part('partials/sidebar'); ?>
+            <?php template_part('partials/sidebar'); ?>
           </aside>
         <?php endif; ?>
       </div>

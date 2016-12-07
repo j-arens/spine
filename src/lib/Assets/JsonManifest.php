@@ -1,6 +1,6 @@
 <?php
 
-include 'ManifestInterface.php';
+include_once(get_template_directory() . '/lib/Assets/ManifestInterface.php');
 
 class JsonManifest implements ManifestInterface {
 

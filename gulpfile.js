@@ -38,7 +38,7 @@ gulp.task('styles', () => gulp.src('./src/styles/**/*.css')
     .pipe(autoprefixer({browsers: ['last 2 versions']}))
     .pipe(nano({discardComments: {removeAll: true}}))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./spine'))
 );
 
 /**
@@ -46,7 +46,7 @@ gulp.task('styles', () => gulp.src('./src/styles/**/*.css')
 */
 gulp.task('js', () => gulp.src('./src/scripts/js/main.js')
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('./dist/scripts/js'))
+    .pipe(gulp.dest('./spine/scripts/js'))
 )
 
 /**
@@ -54,7 +54,7 @@ gulp.task('js', () => gulp.src('./src/scripts/js/main.js')
 */
 gulp.task('images', () => gulp.src('./src/assets/images/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('./dist/assets/images'))
+    .pipe(gulp.dest('./spine/assets/images'))
 );
 
 /**
@@ -62,7 +62,7 @@ gulp.task('images', () => gulp.src('./src/assets/images/*')
 */
 gulp.task('icons', () => gulp.src('./src/assets/icons/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('./dist/assets/icons'))
+    .pipe(gulp.dest('./spine/assets/icons'))
 );
 
 /**
@@ -77,7 +77,7 @@ const targets = [
 ];
 
 gulp.task('migrate', () => gulp.src(targets, {base: './src'})
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./spine'))
 );
 
 /**
@@ -88,7 +88,7 @@ const ftpConfig = {
   password: '',
   host: '',
   remoteFolder: '/public_html/wp-content/themes',
-  glob: ['./dist/*']
+  glob: ['./spine/*']
 }
 
 function connection() {
@@ -138,7 +138,7 @@ gulp.task('deploy-watch', function() {
 /**
 * Gulp commands
 */
-gulp.task('build', ['js', 'images', 'icons', 'migrate']);
+gulp.task('build', ['styles', 'js', 'images', 'icons', 'migrate']);
 
 gulp.task('build-watch', ['styles', 'js', 'images', 'icons', 'migrate', 'watch']);
 

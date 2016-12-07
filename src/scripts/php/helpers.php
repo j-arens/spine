@@ -1,8 +1,8 @@
 <?php
 
-include '../lib/Asset.php';
-include '../lib/Assets/JsonManifest.php';
-include '../lib/Template.php';
+include_once(get_template_directory() . '/lib/Asset.php');
+include_once(get_template_directory() . '/lib/Assets/JsonManifest.php');
+include_once(get_template_directory() . '/lib/Template.php');
 
 function template($layout = 'base') {
   return Template::$instances[$layout];

@@ -72,7 +72,7 @@ class NavWalker extends \Walker_Nav_Menu {
     $url = trailingslashit($url);
     $rel = trailingslashit($rel);
 
-    return ((strcasecmp($url, $rel) === 0) || root_relative_url($url) == $rel);
+    return ((strcasecmp($url, $rel) === 0) || $this->root_relative_url($url) == $rel);
   }
 
   // @codingStandardsIgnoreStart
@@ -81,7 +81,7 @@ class NavWalker extends \Walker_Nav_Menu {
 
     if ($element->is_subitem) {
       foreach ($children_elements[$element->ID] as $child) {
-        if ($child->current_item_parent || url_compare($this->archive, $child->url)) {
+        if ($child->current_item_parent || $this->url_compare($this->archive, $child->url)) {
           $element->classes[] = 'active';
         }
       }

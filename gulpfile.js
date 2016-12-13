@@ -87,6 +87,13 @@ gulp.task('migrate', () => gulp.src(targets, {base: './src'})
 );
 
 /**
+* Theme screenshot
+*/
+gulp.task('screenshot', () => gulp.src('./src/screenshot.png')
+    .pipe(gulp.dest('./dpi-spine'))
+);
+
+/**
 * Ftp deployment
 */
 const ftpConfig = {
@@ -144,12 +151,12 @@ gulp.task('deploy-watch', function() {
 /**
 * Gulp commands
 */
-gulp.task('build', ['styles', 'js', 'images', 'icons', 'migrate']);
+gulp.task('build', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot']);
 
-gulp.task('build-watch', ['styles', 'js', 'images', 'icons', 'migrate', 'watch']);
+gulp.task('build-watch', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'watch']);
 
-gulp.task('deploy', ['styles', 'js', 'images', 'icons', 'migrate', 'deploy']);
+gulp.task('deploy', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'deploy']);
 
-gulp.task('deploy-watch', ['styles', 'js', 'images', 'icons', 'migrate', 'deploy', 'deploy-watch']);
+gulp.task('deploy-watch', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'deploy', 'deploy-watch']);
 
 gulp.task('default', ['deploy-watch']);

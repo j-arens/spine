@@ -36,7 +36,7 @@ const plugins = [
   lost()
 ];
 
-gulp.task('styles', () => gulp.src('./src/styles/**/*.css')
+gulp.task('styles', () => gulp.src('./src/styles/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(postcss(plugins))
@@ -117,7 +117,7 @@ gulp.task('deploy', () => gulp.src(ftpConfig.glob, {base: '.', buffer: false})
 */
 gulp.task('watch', function() {
   // styles
-  gulp.watch('./src/styles/**/*.css', ['styles']);
+  gulp.watch('./src/styles/**/*.scss', ['styles']);
   // js
   gulp.watch('./src/scripts/js/**/*.js', ['js']);
   // images
@@ -130,7 +130,7 @@ gulp.task('watch', function() {
 
 gulp.task('deploy-watch', function() {
   // styles
-  gulp.watch('./src/styles/**/*.css', ['styles', 'deploy']);
+  gulp.watch('./src/styles/**/*.scss', ['styles', 'deploy']);
   // js
   gulp.watch('./src/scripts/js/**/*.js', ['js', 'deploy']);
   // images

@@ -6,22 +6,20 @@
 * global variables must be declared on the :root selector
 */
 
-:root {
-  /* colors */
-  --colorPrimary: #37591d;
-  --colorPrimary-dk: #3c7113;
-  --colorPrimary-lt: #87bc5e;
+/* colors */
+$color-primary: #37591d;
+$color-primary-dk: #3c7113;
+$color-primary-lt: #87bc5e;
 
-  --colorSecondary: #277455;
-  --colorSecondary-dk: #0E573A;
-  --colorSecondary-lt: #489174;
+$color-secondary: #277455;
+$color-secondary-dk: #0E573A;
+$color-secondary-lt: #489174;
 
-  --colorNeutral: gray(85);
-  --colorNeutral-md: gray(65);
-  --colorNeutral-dk: gray(100);
+$color-neutral: gray(85);
+$color-neutral-md: gray(65);
+$color-neutral-dk: gray(100);
 
-  --colorWhite: #fff;
-  --colorBlack: #000;
+$color-white: #fff;
+$color-black: #000;
 
-  --colorText: gray(95);
-}
+$color-text: gray(95);

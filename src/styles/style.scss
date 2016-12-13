@@ -10,8 +10,8 @@ License:            MIT License
 License URI:        http://opensource.org/licenses/MIT
 */
 
-@import 'global/_index.css';
-@import 'vendor/_index.css';
-@import 'typography/_index.css';
-@import 'components/_index.css';
-@import 'layouts/_index.css';
+@import './global/_index.scss';
+@import './vendor/_index.scss';
+@import './typography/_index.scss';
+@import './components/_index.scss';
+@import './layouts/_index.scss';

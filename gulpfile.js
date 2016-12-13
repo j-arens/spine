@@ -100,10 +100,10 @@ gulp.task('screenshot', () => gulp.src('./src/screenshot.png')
 gulp.task('ftp', function() {
 
   const ftpConfig = {
-    user: 'ccfoundationhz',
-    password: '#dpi105074@HO',
-    host: 'ftp.ccfoundationhz.diocesanweb.com',
-    port: '21',
+    user: '',
+    password: '',
+    host: '',
+    port: '',
     remoteFolder: './public_html/wp-content/themes',
     glob: ['./dpi-spine/*']
   }

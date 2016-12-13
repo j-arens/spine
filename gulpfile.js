@@ -105,7 +105,7 @@ gulp.task('ftp', function() {
     host: '',
     port: '',
     remoteFolder: './public_html/wp-content/themes',
-    glob: ['./dpi-spine/*']
+    glob: ['./dpi-spine/**']
   }
 
   const connection = ftp.create({
@@ -163,8 +163,8 @@ gulp.task('build', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot'])
 
 gulp.task('build-watch', ['build', 'watch']);
 
-gulp.task('deploy', function() {sequence('build', 'ftp')});
+gulp.task('deploy', function() {sequence('styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'ftp')});
 
-gulp.task('deploy-watch', function() {sequence('build', 'ftp', 'deploy-watcher')});
+gulp.task('deploy-watch', function() {sequence('styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'ftp', 'deploy-watcher')});
 
 gulp.task('default', ['deploy-watch']);

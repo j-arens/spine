@@ -3,8 +3,9 @@
 // general processors
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-const vinyl = require('vinyl-ftp');
+const ftp = require('vinyl-ftp');
 const concat = require('gulp-concat');
+const sequence = require('run-sequence');
 
 // image processors
 const imagemin = require('gulp-imagemin');
@@ -96,28 +97,35 @@ gulp.task('screenshot', () => gulp.src('./src/screenshot.png')
 /**
 * Ftp deployment
 */
-const ftpConfig = {
-  user: '',
-  password: '',
-  host: '',
-  remoteFolder: '/public_html/wp-content/themes',
-  glob: ['./dpi-spine/*']
-}
+gulp.task('ftp', function() {
 
-function connection() {
-  return vinyl.create({
-    host: ftpConfig.host,
-    port: ftpConfig.port,
-    user: ftpConfig.user,
-    password: ftpConfig.password,
-    parallel: 5
-  });
-}
+  const ftpConfig = {
+    user: 'ccfoundationhz',
+    password: '#dpi105074@HO',
+    host: 'ftp.ccfoundationhz.diocesanweb.com',
+    port: '21',
+    remoteFolder: './public_html/wp-content/themes',
+    glob: ['./dpi-spine/*']
+  }
 
-gulp.task('deploy', () => gulp.src(ftpConfig.glob, {base: '.', buffer: false})
-    .pipe(connection.newer(ftpConfig.remoteFolder))
-    .pipe(connection.dest(ftpConfig.remoteFolder))
-);
+  const connection = ftp.create({
+      host: ftpConfig.host,
+      port: ftpConfig.port,
+      user: ftpConfig.user,
+      password: ftpConfig.password,
+      parallel: 10,
+      log: function(err) {
+        console.log(err);
+      },
+      debug: function(debug) {
+        console.log(debug);
+      }
+    });
+
+  return gulp.src(ftpConfig.glob, {base: '.', buffer: false})
+             .pipe(connection.newer(ftpConfig.remoteFolder))
+             .pipe(connection.dest(ftpConfig.remoteFolder))
+});
 
 /**
 * Watch tasks
@@ -135,17 +143,17 @@ gulp.task('watch', function() {
   gulp.watch('./src/**/*.php', ['migrate'])
 });
 
-gulp.task('deploy-watch', function() {
+gulp.task('deploy-watcher', function() {
   // styles
-  gulp.watch('./src/styles/**/*.scss', ['styles', 'deploy']);
+  gulp.watch('./src/styles/**/*.scss', ['styles', 'ftp']);
   // js
-  gulp.watch('./src/scripts/js/**/*.js', ['js', 'deploy']);
+  gulp.watch('./src/scripts/js/**/*.js', ['js', 'ftp']);
   // images
-  gulp.watch('./src/assets/images/*', ['images', 'deploy']);
+  gulp.watch('./src/assets/images/*', ['images', 'ftp']);
   // icons
-  gulp.watch('./src/assets/icons/*', ['icons', 'deploy'])
+  gulp.watch('./src/assets/icons/*', ['icons', 'ftp'])
   // migrate
-  gulp.watch('./src/**/*.php', ['migrate', 'deploy'])
+  gulp.watch('./src/**/*.php', ['migrate', 'ftp'])
 });
 
 /**
@@ -153,10 +161,10 @@ gulp.task('deploy-watch', function() {
 */
 gulp.task('build', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot']);
 
-gulp.task('build-watch', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'watch']);
+gulp.task('build-watch', ['build', 'watch']);
 
-gulp.task('deploy', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'deploy']);
+gulp.task('deploy', function() {sequence('build', 'ftp')});
 
-gulp.task('deploy-watch', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot', 'deploy', 'deploy-watch']);
+gulp.task('deploy-watch', function() {sequence('build', 'ftp', 'deploy-watcher')});
 
 gulp.task('default', ['deploy-watch']);

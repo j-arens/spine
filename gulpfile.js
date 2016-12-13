@@ -13,8 +13,9 @@ const imagemin = require('gulp-imagemin');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('gulp-autoprefixer');
 const lost = require('lost');
-const smartImport = require('postcss-smart-import');
-const cssnext = require('postcss-cssnext');
+// const smartImport = require('postcss-smart-import');
+// const cssnext = require('postcss-cssnext');
+const sass = require('gulp-sass');
 const nano = require('gulp-cssnano');
 
 // js processors
@@ -23,18 +24,23 @@ const webpack = require('webpack-stream');
 /**
 * Styles
 */
+// const plugins = [
+//   cssnext(),
+//   lost(),
+//   smartImport({
+//     from: './src/styles/main.css'
+//   })
+// ];
+
 const plugins = [
-  cssnext(),
-  lost(),
-  smartImport({
-    from: './src/styles/main.css'
-  })
+  lost()
 ];
 
 gulp.task('styles', () => gulp.src('./src/styles/**/*.css')
     .pipe(sourcemaps.init())
+    .pipe(sass())
     .pipe(postcss(plugins))
-    .pipe(concat('style.css'))
+    // .pipe(concat('style.css'))
     .pipe(autoprefixer({browsers: ['last 2 versions']}))
     .pipe(nano({discardComments: false}))
     .pipe(sourcemaps.write('.'))

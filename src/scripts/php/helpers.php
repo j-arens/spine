@@ -25,7 +25,7 @@ function asset_path($filename) {
  */
 function display_sidebar() {
   static $display;
-  isset($display) || $display = apply_filters('sage/display_sidebar', false);
+  isset($display) || $display = apply_filters('spine/display_sidebar', false);
   return $display;
 }
 
@@ -37,16 +37,16 @@ function title() {
     if ($home = get_option('page_for_posts', true)) {
         return get_the_title($home);
     }
-    return __('Latest Posts', 'sage');
+    return __('Latest Posts', 'spine');
   }
   if (is_archive()) {
     return get_the_archive_title();
   }
   if (is_search()) {
-    return sprintf(__('Search Results for %s', 'sage'), get_search_query());
+    return sprintf(__('Search Results for %s', 'spine'), get_search_query());
   }
   if (is_404()) {
-    return __('Not Found', 'sage');
+    return __('Not Found', 'spine');
   }
   return get_the_title();
 }

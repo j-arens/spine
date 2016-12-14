@@ -7,7 +7,7 @@ include_once(get_stylesheet_directory() . '/lib/Assets/ManifestInterface.php');
 */
 class Asset {
 
-  public static $dist = '/spine';
+  public static $dist = '';
   protected $manifest;
   protected $asset;
   protected $dir;

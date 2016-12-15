@@ -11,6 +11,7 @@
     "node": true
   },
   "rules": {
-    # "import/extensions": [1, { "js": "never" }]
+    # "no-console": 0,
+    "import/extensions": [1, { "js": "never" }]
   }
 }

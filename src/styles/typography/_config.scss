@@ -15,17 +15,17 @@
 :root {
   font-family: 'Open Sans', sans-serif;
   font-size: calc(.45vw + .45vh + .25vmin);
+  color: $color-text;
 }
 
 p {
-  color: $color-black;
   font-size: 1em;
   margin-bottom: 1.3em;
 }
 
 a {
   text-decoration: none;
-  color: lighten($color-primary, 10%);
+  color: $color-primary;
 
   &:hover {
     text-decoration: underline;

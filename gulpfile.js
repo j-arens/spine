@@ -6,6 +6,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const ftp = require('vinyl-ftp');
 const concat = require('gulp-concat');
 const sequence = require('run-sequence');
+const bsync = require('browser-sync');
 
 // image processors
 const imagemin = require('gulp-imagemin');
@@ -18,6 +19,7 @@ const lost = require('lost');
 // const cssnext = require('postcss-cssnext');
 const sass = require('gulp-sass');
 const nano = require('gulp-cssnano');
+const flexbug = require('postcss-flexbugs-fixes');
 
 // js processors
 const webpack = require('webpack-stream');
@@ -25,16 +27,9 @@ const webpack = require('webpack-stream');
 /**
 * Styles
 */
-// const plugins = [
-//   cssnext(),
-//   lost(),
-//   smartImport({
-//     from: './src/styles/main.css'
-//   })
-// ];
-
 const plugins = [
-  lost()
+  lost(),
+  flexbug()
 ];
 
 gulp.task('styles', () => gulp.src('./src/styles/**/*.scss')
@@ -136,9 +131,9 @@ gulp.task('watch', function() {
   // js scripts
   gulp.watch('./src/scripts/js/**/*.js', ['js']);
   //php scripts
-  gulp.watch('./src/scripts/php/**/*.php', ['migrate', 'ftp']);
+  gulp.watch('./src/scripts/php/**/*.php', ['migrate']);
   // templates
-  gulp.watch('./src/templates/**/*.php', ['migrate', 'ftp']);
+  gulp.watch('./src/templates/**/*.php', ['migrate']);
   // images
   gulp.watch('./src/assets/images/*', ['images']);
   // icons

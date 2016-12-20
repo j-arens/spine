@@ -1,18 +1,16 @@
-@custom-selector: --button button, .btn;
-
-:--button {
+.btn {
   display: inline-block;
   text-decoration: none;
-  background: var(--colorPrimary);
-  color: var(--colorWhite);
+  background: $color-primary;
+  color: $color-primary;
   padding: .75em 2em;
   border: 2px solid transparent;
   transition: all .2s ease;
 
-  & :hover {
+  &:hover {
     text-decoration: none;
-    background: var(--colorWhite);
-    border-color: var(--colorPrimary);
-    color: var(--colorPrimary);
+    background: $color-white;
+    border-color: $color-primary;
+    color: $color-primary;
   }
 }

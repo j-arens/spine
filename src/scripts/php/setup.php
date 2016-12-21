@@ -40,12 +40,6 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
     add_theme_support('html5', ['caption', 'gallery', 'search-form']);
-
-    /**
-     * Use main stylesheet for visual editor
-     * @see assets/styles/layouts/_tinymce.scss
-     */
-    add_editor_style(asset_path('/style.css'));
 });
 
 /**

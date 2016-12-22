@@ -16,21 +16,17 @@
       do_action('get_header');
       get_template_part('partials/header');
     ?>
-    <div class="wrap container" role="document">
-      <div class="content row">
-        <main class="main">
-          <?php if (is_front_page()) {
-          get_template_part('front-page');
-        } else {
-          template()->main();
-        } ?>
-        </main>
-        <?php if (display_sidebar()) : ?>
-          <aside class="sidebar">
-            <?php template_part('partials/sidebar'); ?>
-          </aside>
-        <?php endif; ?>
-      </div>
+    <div class="wrap" role="document">
+      <div class="gutter gutter-left"></div>
+      <main class="main">
+        <?php load_template(template()->main()); ?>
+      </main>
+      <?php if (display_sidebar()) : ?>
+        <aside class="sidebar">
+          <?php template_part('partials/sidebar'); ?>
+        </aside>
+      <?php endif; ?>
+      <div class="gutter gutter-right"></div>
     </div>
     <?php
       do_action('get_footer');

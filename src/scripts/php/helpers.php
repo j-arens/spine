@@ -25,8 +25,12 @@ function asset_path($filename) {
  */
 function display_sidebar() {
   static $display;
-  isset($display) || $display = apply_filters('spine/display_sidebar', false);
-  return $display;
+  isset($display) || $display = !in_array(true, [
+    is_404(),
+    is_search(),
+    is_front_page()
+  ]);
+  return apply_filters('spine/display_sidebar', $display);
 }
 
 /**

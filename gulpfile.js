@@ -38,7 +38,7 @@ gulp.task('styles', () => gulp.src('./src/styles/**/*.scss')
     .pipe(postcss(plugins))
     // .pipe(concat('style.css'))
     .pipe(autoprefixer({browsers: ['last 2 versions']}))
-    .pipe(nano({discardComments: false}))
+    .pipe(nano({discardComments: false, zindex: false}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dpi-spine'))
 );

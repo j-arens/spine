@@ -2,7 +2,7 @@
 Theme Name:         DPI Spine Starter Theme
 Theme URI:          http://diocesan.com
 Description:        Spine is a WordPress starter theme.
-Version:            0.0.1alpha
+Version:            1.0.2
 Author:             Josh Arens
 Author URI:         https://github.com/j-arens
 Text Domain:        spine
@@ -11,8 +11,7 @@ License URI:        http://opensource.org/licenses/MIT
 GitHub Theme URI:   https://github.com/<owner>/<repo>
 */
 
-@import './global/_index';
+@import './variables/_index';
 @import './vendor/_index';
-@import './typography/_index';
+@import './base/_index';
 @import './components/_index';
-@import './layouts/_index';

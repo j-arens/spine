@@ -52,14 +52,16 @@ class Partial {
   * Passes $this->parts() to locate_template() to retrieve template location
   */
   public function path() {
+
     if (!$path = $this->cache('path')) {
       $path = $this->cache('path', locate_template($this->parts()));
     }
 
-    return apply_filters('sage/partial_' . basename($path, '.php'), $path, $this->parts()) ?: $path;
+    return apply_filters('spine/partial_' . basename($path, '.php'), $path, $this->parts()) ?: $path;
   }
 
   protected function cache($key, $value = null) {
+
     if ($value !== null) {
       self::$cache[$this->template][$key] = $value;
     }

@@ -24,16 +24,16 @@ class Wrapper implements WrapperInterface {
   }
 
   public function wrap() {
-    $wrappers = apply_filters('sage/wrap_' . $this->slug, $this->wrapper) ?: $this->wrapper;
+    $wrappers = apply_filters('spine/wrap_' . $this->slug, $this->wrapper) ?: $this->wrapper;
     return locate_template($wrappers);
   }
 
   public function slug() {
     return $this->slug;
   }
-
+  
   public function unwrap() {
-    $template = apply_filters('sage/unwrap_' . $this->slug, $this->template) ?: $this->template;
+    $template = apply_filters('spine/unwrap_' . $this->slug, $this->template) ?: $this->template;
     return locate_template($template) ?: $template;
   }
 }

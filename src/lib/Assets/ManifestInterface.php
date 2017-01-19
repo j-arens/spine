@@ -8,6 +8,7 @@ interface ManifestInterface {
   * If the manifest does not have an entry for $file, then return $file
   *
   */
+
   public function get($file);
 
   /**

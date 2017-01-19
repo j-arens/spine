@@ -1,12 +1,18 @@
 'use-strict';
 
+// node
+const path = require('path');
+
+// utils
+const argv = require('yargs');
+const segregate = require('gulp-watch');
+const ftp = require('vinyl-ftp');
+const sequence = require('run-sequence');
+const bsync = require('browser-sync');
+
 // general processors
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-const ftp = require('vinyl-ftp');
-const concat = require('gulp-concat');
-const sequence = require('run-sequence');
-const bsync = require('browser-sync');
 
 // image processors
 const imagemin = require('gulp-imagemin');
@@ -15,14 +21,21 @@ const imagemin = require('gulp-imagemin');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('gulp-autoprefixer');
 const lost = require('lost');
-// const smartImport = require('postcss-smart-import');
-// const cssnext = require('postcss-cssnext');
 const sass = require('gulp-sass');
 const nano = require('gulp-cssnano');
 const flexbug = require('postcss-flexbugs-fixes');
 
 // js processors
 const webpack = require('webpack-stream');
+
+const env = {
+  dev: argv.dev || true,
+  prod: argv.production || false,
+  staging: argv.staging || false,
+  distPath: './dpi-spine',
+  devPath: 'C:/Users/DPI/Desktop/dev/wordpress/wordpress/wp-content/themes',
+  devUrl: 'localhost'
+}
 
 /**
 * Styles
@@ -32,15 +45,25 @@ const plugins = [
   flexbug()
 ];
 
+const browserSupport = [
+  "Android 2.3",
+  "Android >= 4",
+  "Chrome >= 20",
+  "Firefox >= 24",
+  "Explorer >= 8",
+  "iOS >= 6",
+  "Opera >= 12",
+  "Safari >= 6"
+];
+
 gulp.task('styles', () => gulp.src('./src/styles/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(postcss(plugins))
-    // .pipe(concat('style.css'))
-    .pipe(autoprefixer({browsers: ['last 2 versions']}))
+    .pipe(autoprefixer({browsers: browserSupport}))
     .pipe(nano({discardComments: false, zindex: false}))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./dpi-spine'))
+    .pipe(gulp.dest(env.distPath))
 );
 
 /**
@@ -48,15 +71,15 @@ gulp.task('styles', () => gulp.src('./src/styles/**/*.scss')
 */
 gulp.task('js', () => gulp.src('./src/scripts/js/main.js')
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('./dpi-spine/scripts/js'))
+    .pipe(gulp.dest(env.distPath + '/scripts/js'))
 )
 
 /**
 * Images
 */
-gulp.task('images', () => gulp.src('./src/assets/images/*')
+gulp.task('images', () => gulp.src('./src/assets/images/*.+(jpg|jpeg|gif|png|svg)')
     .pipe(imagemin())
-    .pipe(gulp.dest('./dpi-spine/assets/images'))
+    .pipe(gulp.dest(env.distPath + '/assets/images'))
 );
 
 /**
@@ -64,29 +87,55 @@ gulp.task('images', () => gulp.src('./src/assets/images/*')
 */
 gulp.task('icons', () => gulp.src('./src/assets/icons/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('./dpi-spine/assets/icons'))
+    .pipe(gulp.dest(env.disPath + '/assets/icons'))
 );
 
 /**
 * Migrate php
 */
-const targets = [
-  './src/functions.php',
-  './src/index.php',
-  './src/scripts/php/**/*',
-  './src/templates/**/*',
-  './src/lib/**/*'
-];
+const phpSrc = './src/**/*.php';
+const phpBase = {base: './src'};
 
-gulp.task('migrate', () => gulp.src(targets, {base: './src'})
-    .pipe(gulp.dest('./dpi-spine'))
+gulp.task('migrate', () => gulp.src(phpSrc, phpBase)
+    .pipe(segregate(phpSrc, phpBase))
+    .pipe(gulp.dest(env.distPath))
 );
 
 /**
 * Theme screenshot
 */
 gulp.task('screenshot', () => gulp.src('./src/screenshot.png')
-    .pipe(gulp.dest('./dpi-spine'))
+    .pipe(gulp.dest(env.distPath))
+);
+
+/**
+* Synchronous actions
+*/
+gulp.task('sequence', () => sequence(
+  'styles',
+  'js',
+  'images',
+  'icons',
+  'migrate',
+  'screenshot',
+  'ftp'
+));
+
+/**
+* Browsersync init
+*/
+gulp.task('bsync', () => bsync.init({proxy: env.devUrl}));
+
+/**
+* Local deployment
+*/
+const distSrc = './dpi-spine/**/*';
+const distBase = {base: './dpi-spine'};
+
+gulp.task('localDeploy', () => gulp.src(distSrc, distBase)
+    .pipe(segregate(distSrc, distBase))
+    .pipe(gulp.dest(env.devPath + '/dpi-spine'))
+    .pipe(bsync.stream())
 );
 
 /**
@@ -128,35 +177,23 @@ gulp.task('ftp', function() {
 gulp.task('watch', function() {
   // styles
   gulp.watch('./src/styles/**/*.scss', ['styles']);
+
   // js scripts
   gulp.watch('./src/scripts/js/**/*.js', ['js']);
+
   //php scripts
   gulp.watch('./src/scripts/php/**/*.php', ['migrate']);
-  // templates
-  gulp.watch('./src/templates/**/*.php', ['migrate']);
+
   // images
   gulp.watch('./src/assets/images/*', ['images']);
-  // icons
-  gulp.watch('./src/assets/icons/*', ['icons'])
-  // migrate
-  gulp.watch('./src/**/*.php', ['migrate'])
-});
 
-gulp.task('deploy-watcher', function() {
-  // styles
-  gulp.watch('./src/styles/**/*.scss', ['sync']);
-  // js scripts
-  gulp.watch('./src/scripts/js/**/*.js', ['sync']);
-  //php scripts
-  gulp.watch('./src/scripts/php/**/*.php', ['sync']);
-  // templates
-  gulp.watch('./src/templates/**/*.php', ['sync']);
-  // images
-  gulp.watch('./src/assets/images/*', ['sync']);
   // icons
-  gulp.watch('./src/assets/icons/*', ['sync'])
-  // migrate
-  gulp.watch('./src/*.php', ['sync'])
+  gulp.watch('./src/assets/icons/*', ['icons']);
+
+  // dev dist
+  if (env.dev) {
+    gulp.watch('./dpi-spine/**/*', ['localDeploy']);
+  }
 });
 
 /**
@@ -174,13 +211,6 @@ gulp.task('sync', function() {
   )
 });
 
-gulp.task('sync-watch', function() {
-  sequence(
-    'sync',
-    'deploy-watcher'
-  )
-})
-
 /**
 * Gulp commands
 */
@@ -188,8 +218,8 @@ gulp.task('build', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot'])
 
 gulp.task('build-watch', ['build', 'watch']);
 
-gulp.task('deploy', ['sync']);
+gulp.task('dev', ['build', 'bsync', 'localDeploy', 'watch']);
 
-gulp.task('deploy-watch', ['sync-watch']);
+gulp.task('deploy', ['sequence']);
 
-gulp.task('default', ['deploy-watch']);
+gulp.task('default', ['dev']);

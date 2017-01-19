@@ -48,7 +48,7 @@ $spine_includes = [
   '/scripts/php/js-to-footer.php',
   '/scripts/php/clean-up.php',
   '/scripts/php/nice-search.php',
-  '/scripts/php/disable-asset-ver.php',
+  '/scripts/php/disable-asset-ver.php', // - for dev only
   '/scripts/php/disable-trackbacks.php',
   '/scripts/php/disable-wpcustomizer.php'
 ];

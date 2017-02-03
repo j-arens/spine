@@ -1,5 +1,4 @@
-// WordPress Generated Classes
-// http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+/* http://codex.wordpress.org/CSS#WordPress_Generated_Classes */
 
 .alignnone {
     margin: 5px 20px 20px 0;
@@ -77,7 +76,6 @@ a img.aligncenter {
     padding: 0 4px 5px;
 }
 
-/* Text meant only for screen readers. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
@@ -95,7 +93,6 @@ a img.aligncenter {
 	color: #21759b;
 	display: block;
 	font-size: 14px;
-	font-size: 0.875rem;
 	font-weight: bold;
 	height: auto;
 	left: 5px;

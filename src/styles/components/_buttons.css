@@ -1,0 +1,39 @@
+@import '../variables/_index';
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  width: 10.3rem;
+  line-height: 4.25rem;
+  transition: all .2s ease;
+  font-size: 1rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.button-thin {
+  line-height: 2.5rem;
+  padding: 0;
+}
+
+.button-primary {
+  color: var(--colorPrimary);
+  border: 2px solid var(--colorPrimary);
+
+  &:hover {
+    background: var(--colorPrimary);
+    color: var(--colorPrimary);
+  }
+}
+
+.button-secondary {
+  color: var(--colorSecondary);
+  border: 2px solid var(--colorSecondary);
+
+  &:hover {
+    background: var(--colorSecondary);
+    color: var(--colorSecondary);
+  }
+}

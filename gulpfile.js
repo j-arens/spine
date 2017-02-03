@@ -19,9 +19,9 @@ const imagemin = require('gulp-imagemin');
 
 // css processors
 const postcss = require('gulp-postcss');
-const autoprefixer = require('gulp-autoprefixer');
-const lost = require('lost');
-const sass = require('gulp-sass');
+const next = require('postcss-cssnext');
+const ant = require('postcss-ant');
+const cssImport = require('postcss-import');
 const nano = require('gulp-cssnano');
 const flexbug = require('postcss-flexbugs-fixes');
 
@@ -40,10 +40,20 @@ const env = {
 /**
 * Styles
 */
-const plugins = [
-  lost(),
-  flexbug()
-];
+
+// const plugins = [
+//   cssImport(),
+//   ant(),
+//   next({
+//     features: {
+//       rem: false,
+//       customProperties: {
+//         warnings: false
+//       }
+//     }
+//   }),
+//   flexbug()
+// ];
 
 const browserSupport = [
   "Android 2.3",
@@ -56,11 +66,22 @@ const browserSupport = [
   "Safari >= 6"
 ];
 
-gulp.task('styles', () => gulp.src('./src/styles/**/*.scss')
+gulp.task('styles', () => gulp.src('./src/styles/**/*.css')
     .pipe(sourcemaps.init())
-    .pipe(sass())
-    .pipe(postcss(plugins))
-    .pipe(autoprefixer({browsers: browserSupport}))
+    .pipe(postcss([
+      cssImport(),
+      ant(),
+      next({
+        browsers: browserSupport,
+        features: {
+          rem: false,
+          customProperties: {
+            strict: false
+          }
+        }
+      }),
+      flexbug()
+    ]))
     .pipe(nano({discardComments: false, zindex: false}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(env.distPath))
@@ -176,7 +197,7 @@ gulp.task('ftp', function() {
 */
 gulp.task('watch', function() {
   // styles
-  gulp.watch('./src/styles/**/*.scss', ['styles']);
+  gulp.watch('./src/styles/**/*.css', ['styles']);
 
   // js scripts
   gulp.watch('./src/scripts/js/**/*.js', ['js']);

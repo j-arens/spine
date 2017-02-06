@@ -41,19 +41,20 @@ const env = {
 * Styles
 */
 
-// const plugins = [
-//   cssImport(),
-//   ant(),
-//   next({
-//     features: {
-//       rem: false,
-//       customProperties: {
-//         warnings: false
-//       }
-//     }
-//   }),
-//   flexbug()
-// ];
+const plugins = [
+  cssImport(),
+  ant(),
+  next({
+    browsers: browserSupport,
+    features: {
+      rem: false,
+      customProperties: {
+        strict: false
+      }
+    }
+  }),
+  flexbug()
+];
 
 const browserSupport = [
   "Android 2.3",
@@ -66,22 +67,9 @@ const browserSupport = [
   "Safari >= 6"
 ];
 
-gulp.task('styles', () => gulp.src('./src/styles/**/*.css')
+gulp.task('styles', () => gulp.src('./src/styles/style.css')
     .pipe(sourcemaps.init())
-    .pipe(postcss([
-      cssImport(),
-      ant(),
-      next({
-        browsers: browserSupport,
-        features: {
-          rem: false,
-          customProperties: {
-            strict: false
-          }
-        }
-      }),
-      flexbug()
-    ]))
+    .pipe(postcss(plugins))
     .pipe(nano({discardComments: false, zindex: false}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(env.distPath))

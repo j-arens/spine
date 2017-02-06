@@ -94,9 +94,9 @@ gulp.task('images', () => gulp.src('./src/assets/images/*.+(jpg|jpeg|gif|png|svg
 /**
 * Icons
 */
-gulp.task('icons', () => gulp.src('./src/assets/icons/*')
+gulp.task('icons', () => gulp.src('./src/assets/icons/*.+(jpg|jpeg|gif|png|svg)')
     .pipe(imagemin())
-    .pipe(gulp.dest(env.disPath + '/assets/icons'))
+    .pipe(gulp.dest(env.distPath + '/assets/icons'))
 );
 
 /**

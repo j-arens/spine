@@ -9,6 +9,7 @@ const segregate = require('gulp-watch');
 const ftp = require('vinyl-ftp');
 const sequence = require('run-sequence');
 const bsync = require('browser-sync');
+const merge = require('merge-stream');
 
 // general processors
 const gulp = require('gulp');
@@ -20,7 +21,6 @@ const imagemin = require('gulp-imagemin');
 // css processors
 const postcss = require('gulp-postcss');
 const next = require('postcss-cssnext');
-const ant = require('postcss-ant');
 const cssImport = require('postcss-import');
 const nano = require('gulp-cssnano');
 const flexbug = require('postcss-flexbugs-fixes');
@@ -43,7 +43,6 @@ const env = {
 
 const plugins = [
   cssImport(),
-  ant(),
   next({
     browsers: browserSupport,
     features: {
@@ -81,39 +80,27 @@ gulp.task('styles', () => gulp.src('./src/styles/style.css')
 gulp.task('js', () => gulp.src('./src/scripts/js/main.js')
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest(env.distPath + '/scripts/js'))
-)
-
-/**
-* Images
-*/
-gulp.task('images', () => gulp.src('./src/assets/images/*.+(jpg|jpeg|gif|png|svg)')
-    .pipe(imagemin())
-    .pipe(gulp.dest(env.distPath + '/assets/images'))
 );
 
 /**
-* Icons
+* Assets
 */
-gulp.task('icons', () => gulp.src('./src/assets/icons/*.+(jpg|jpeg|gif|png|svg)')
-    .pipe(imagemin())
-    .pipe(gulp.dest(env.distPath + '/assets/icons'))
-);
+gulp.task('assets', () => {
+  const icons = gulp.src('./src/assets/icons/*.+(jpg|jpeg|gif|png|svg)')
+                    .pipe(imagemin())
+                    .pipe(gulp.dest(env.distPath + '/assets/icons'));
+
+  const images = gulp.src('./src/assets/images/*.+(jpg|jpeg|gif|png|svg)')
+                      .pipe(imagemin())
+                      .pipe(gulp.dest(env.distPath + '/assets/images'));
+
+  return merge(icons, images);
+});
 
 /**
-* Migrate php
+* Migrate static files
 */
-const phpSrc = './src/**/*.php';
-const phpBase = {base: './src'};
-
-gulp.task('migrate', () => gulp.src(phpSrc, phpBase)
-    .pipe(segregate(phpSrc, phpBase))
-    .pipe(gulp.dest(env.distPath))
-);
-
-/**
-* Theme screenshot
-*/
-gulp.task('screenshot', () => gulp.src('./src/screenshot.png')
+gulp.task('migrate', () => gulp.src('./src/**/*+(screenshot.png|.php)', {base: './src'})
     .pipe(gulp.dest(env.distPath))
 );
 
@@ -167,10 +154,10 @@ gulp.task('ftp', function() {
       user: ftpConfig.user,
       password: ftpConfig.password,
       parallel: 10,
-      log: function(err) {
+      log(err) {
         console.log(err);
       },
-      debug: function(debug) {
+      debug(debug) {
         console.log(debug);
       }
     });
@@ -194,10 +181,10 @@ gulp.task('watch', function() {
   gulp.watch('./src/scripts/php/**/*.php', ['migrate']);
 
   // images
-  gulp.watch('./src/assets/images/*', ['images']);
+  gulp.watch('./src/assets/images/*', ['assets']);
 
   // icons
-  gulp.watch('./src/assets/icons/*', ['icons']);
+  gulp.watch('./src/assets/icons/*', ['assets']);
 
   // dev dist
   if (env.dev) {
@@ -223,7 +210,7 @@ gulp.task('sync', function() {
 /**
 * Gulp commands
 */
-gulp.task('build', ['styles', 'js', 'images', 'icons', 'migrate', 'screenshot']);
+gulp.task('build', ['styles', 'js', 'assets', 'migrate']);
 
 gulp.task('build-watch', ['build', 'watch']);
 

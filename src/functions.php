@@ -44,13 +44,10 @@ $spine_includes = [
   '/scripts/php/helpers.php',
   '/scripts/php/setup.php',
   '/scripts/php/filters.php',
-  '/scripts/php/jquery-cdn.php',
   '/scripts/php/js-to-footer.php',
   '/scripts/php/clean-up.php',
   '/scripts/php/nice-search.php',
-  '/scripts/php/disable-asset-ver.php', // - for dev only
   '/scripts/php/disable-trackbacks.php',
-  '/scripts/php/disable-wpcustomizer.php'
 ];
 
 array_walk($spine_includes, function ($file) {

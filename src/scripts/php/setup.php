@@ -6,8 +6,8 @@ include_once(get_stylesheet_directory() . '/lib/Template.php');
  * Theme assets
  */
  add_action('wp_enqueue_scripts', function () {
-     wp_enqueue_style('spine-style', get_stylesheet_uri() );
-     wp_enqueue_script('spine-js', asset_path( 'scripts/js/bundle.js' ), ['jquery'], null, true);
+     wp_enqueue_style('spine-style', get_stylesheet_uri(), null, time() );
+     wp_enqueue_script('spine-js', asset_path( 'scripts/js/bundle.js' ), ['jquery'], null, time(), true);
  }, 100);
 
 /**

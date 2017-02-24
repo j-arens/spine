@@ -17,7 +17,6 @@
       get_template_part('partials/header');
     ?>
     <div class="wrap" role="document">
-      <div class="gutter gutter-left"></div>
       <main class="main">
         <?php load_template(template()->main()); ?>
       </main>
@@ -26,7 +25,6 @@
           <?php template_part('partials/sidebar'); ?>
         </aside>
       <?php endif; ?>
-      <div class="gutter gutter-right"></div>
     </div>
     <?php
       do_action('get_footer');

@@ -5,6 +5,7 @@
   --container-lg-mw: 960px;
   --container-xl-mw: 1140px;
   --container-xw-mw: 1600px;
+  --container-full: 1920px;
 }
 
 @custom-media --breakpoint-sm (min-width: 576px);
@@ -12,3 +13,4 @@
 @custom-media --breakpoint-lg (min-width: 992px);
 @custom-media --breakpoint-xl (min-width: 1200px);
 @custom-media --breakpoint-xw (min-width: 1600px);
+@custom-media --breakpoint-full (min-width: 1920px);

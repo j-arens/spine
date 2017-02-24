@@ -1,11 +1,24 @@
-/*body.page {
+body.page,
+body.single,
+body.archive {
 
-  main {
-    padding: 2em 0;
-  }
+  & .main > article {
+    & ul,
+    & dl,
+    & ol {
+      padding-left: 2rem;
+      margin-bottom: 1em;
 
-  main article {
-    max-width: 800px;
-    margin: 0 auto;
+      & ul,
+      & ol {
+        list-style: lower-alpha;
+      }
+
+      & li,
+      & dt,
+      & dd {
+        margin-bottom: initial;
+      }
+    }
   }
-}*/
+}

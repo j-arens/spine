@@ -34,7 +34,6 @@ img {
   line-height: 2;
   position: relative;
   text-align: center;
-  width: 100%;
 }
 
 img:before {
@@ -49,15 +48,8 @@ img:after {
   font-size: 12px;
 }
 
-/**
-* Display links href if no text value is given
-*/
- /*a[href^="http"]:empty::before {
-   content: attr(href);
-}*/
-
 .screen-reader-response {
-    position: absolute;
-    left: -9999%;
-    visibility: hidden;
-  }
+  position: absolute;
+  left: -9999%;
+  visibility: hidden;
+}

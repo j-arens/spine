@@ -1,0 +1,30 @@
+body.page,
+body.single,
+body.archive {
+
+  & .main > article {
+    & table td {
+      padding: 8px;
+    }
+
+    @media screen and (max-width: --breakpoint-lg) {
+  		& table,
+  		& tbody,
+  		& thead,
+  		& th,
+  		& tr,
+  		& td {
+  			display: block;
+  		}
+
+  		& table {
+  			height: auto !important;
+  			width: 100% !important;
+  		}
+
+  		& td {
+  			width: 100% !important;
+  		}
+    }
+  }
+}

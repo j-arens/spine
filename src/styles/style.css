@@ -1,8 +1,8 @@
 @import './vendor/_index';
 @import './base/_index';
+@import './grid/_index';
+@import './layouts/_index';
 @import './components/_index';
-
-@ant-gutters 1em;
 
 /*
 Theme Name:         DPI Spine Starter Theme

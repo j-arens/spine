@@ -6,7 +6,7 @@
   --colorBody: #3b3b3b;
   --colorLink: var(--colorSecondary);
   font-family: 'Work Sans', sans-serif;
-  font-size: calc(.215vw + .215vh + 1vmin); /* adds up to ~1em */
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.45;
   color: var(--colorBody);

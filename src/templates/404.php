@@ -1,5 +1,5 @@
 <div class="not-found">
-  <div class="404-bg">
+  <div class="not-found-decorator">
     <p>Sorry, we couldn't find the page you're looking for.</p>
     <?php get_search_form(); ?>
   </div>

@@ -1,10 +1,10 @@
 <?php get_template_part('partials/page-header'); ?>
 
 <?php if (!have_posts()) : ?>
-  <div class="alert alert-warning">
-    <?php _e('Sorry, no results were found.', 'spine'); ?>
+  <div class="no-posts">
+    <p>Sorry, we couldn't find anything. Try another search?</p>
+    <?php get_search_form(); ?>
   </div>
-  <?php get_search_form(); ?>
 <?php endif; ?>
 
 <?php while (have_posts()) : the_post(); ?>

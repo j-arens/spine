@@ -43,7 +43,7 @@ h6 {
 h4,
 h5,
 h6 {
-  color: var(--colorPrimary);
+  color: var(--colorSecondary);
 }
 
 h1,

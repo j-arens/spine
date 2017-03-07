@@ -7,7 +7,6 @@
   --colorLink: var(--colorSecondary);
   font-family: 'Work Sans', sans-serif;
   font-size: 16px;
-  font-weight: 300;
   line-height: 1.45;
   color: var(--colorBody);
 }

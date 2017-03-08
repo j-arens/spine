@@ -35,6 +35,10 @@
     right: calc((.25 / 12) * 100)%;
   }
 
+  .push-xs-quarter {
+    left: calc((.25 / 12) * 100)%;
+  }
+
 @for $i from 0 to 12 {
   .col-xs-$i { width: calc(($(i) / 12) * 100)%; }
   .col-xs-$(i)-quarter { width: calc((($(i) - .25) / 12) * 100)%; }
@@ -56,6 +60,10 @@
 
   .pull-sm-quarter {
     right: calc((.25 / 12) * 100)%;
+  }
+
+  .push-sm-quarter {
+    left: calc((.25 / 12) * 100)%;
   }
 
   @for $i from 0 to 12 {
@@ -80,6 +88,10 @@
 
   .pull-md-quarter {
     right: calc((.25 / 12) * 100)%;
+  }
+
+  .push-md-quarter {
+    left: calc((.25 / 12) * 100)%;
   }
 
   @for $i from 0 to 12 {
@@ -134,6 +146,10 @@
     right: calc((.25 / 12) * 100)%;
   }
 
+  .push-xl-quarter {
+    left: calc((.25 / 12) * 100)%;
+  }
+
   @for $i from 0 to 12 {
     .col-xl-$i { width: calc(($(i) / 12) * 100)%; }
     .col-xl-$(i)-quarter { width: calc((($(i) - .25) / 12) * 100)%; }
@@ -141,5 +157,32 @@
     .pull-xl-$i { right: calc(($(i) / 12) * 100)%; }
     .push-xl-$i { left: calc(($(i) / 12) * 100)%; }
     .offset-xl-$i { margin-left: calc(($(i) / 12) * 100)%; }
+  }
+}
+
+@media screen and (--breakpoint-xw) {
+  .offset-xw-half {
+    margin-left: calc((.5 / 12) * 100)%;
+  }
+
+  .offset-xw-quarter {
+    margin-left: calc((.25 / 12) * 100)%;
+  }
+
+  .pull-xw-quarter {
+    right: calc((.25 / 12) * 100)%;
+  }
+
+  .push-xw-quarter {
+    left: calc((.25 / 12) * 100)%;
+  }
+
+  @for $i from 0 to 12 {
+    .col-xw-$i { width: calc(($(i) / 12) * 100)%; }
+    .col-xw-$(i)-quarter { width: calc((($(i) - .25) / 12) * 100)%; }
+    .col-xw-$(i)-half { width: calc((($(i) - .5) / 12) * 100)%; }
+    .pull-xw-$i { right: calc(($(i) / 12) * 100)%; }
+    .push-xw-$i { left: calc(($(i) / 12) * 100)%; }
+    .offset-xw-$i { margin-left: calc(($(i) / 12) * 100)%; }
   }
 }

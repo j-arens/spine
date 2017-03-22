@@ -53,3 +53,13 @@ img:after {
   left: -9999%;
   visibility: hidden;
 }
+
+@media screen and (max-width: 782px) {
+  :root {
+    margin-top: 0 !important;
+  }
+
+  #wpadminbar {
+    display: none;
+  }
+}

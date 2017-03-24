@@ -5,7 +5,7 @@ const nodeEnv = process.env.NODE_ENV || 'production';
 
 module.exports = {
   devtool: 'source-map',
-  entry: ['./src/scripts/js/main.js'],
+  entry: ['babel-polyfill', './src/scripts/js/main.js'],
   output: {
     filename: 'bundle.js'
   },
@@ -24,8 +24,7 @@ module.exports = {
         loader: 'babel-loader',
         babelrc: false,
         query: {
-          presets: ['es2015'],
-          plugins: ['transform-runtime']
+          presets: ['es2015']
         }
       }
     ]

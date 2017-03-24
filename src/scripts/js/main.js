@@ -1,3 +1,6 @@
+// polyfill es6 features to be compatible with old browsers
+require('babel-polyfill');
+
 // import local dependencies
 import Router from './utils/router';
 import common from './routes/Common';

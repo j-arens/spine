@@ -49,6 +49,10 @@ img:after {
   font-size: 12px;
 }
 
+hr {
+  margin: 1em 0;
+}
+
 .screen-reader-response {
   position: absolute;
   left: -9999%;

@@ -3,6 +3,12 @@ body.single,
 body.archive {
 
   & .main > article {
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    
     & ul,
     & dl,
     & ol {

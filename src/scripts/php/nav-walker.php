@@ -79,6 +79,8 @@ class NavWalker extends \Walker_Nav_Menu {
   public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
     $element->is_subitem = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
 
+    $element->classes[] = 'depth-' . $depth;
+
     if ($element->is_subitem) {
       foreach ($children_elements[$element->ID] as $child) {
         if ($child->current_item_parent || $this->url_compare($this->archive, $child->url)) {
@@ -103,7 +105,7 @@ class NavWalker extends \Walker_Nav_Menu {
     // Fix core `active` behavior for custom post types
     if ($this->cpt) {
       $classes = str_replace('current_page_parent', '', $classes);
-      if (url_compare($this->archive, $item->url)) {
+      if ($this->url_compare($this->archive, $item->url)) {
         $classes[] = 'active';
       }
     }
@@ -113,7 +115,11 @@ class NavWalker extends \Walker_Nav_Menu {
     $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
 
     // Re-add core `menu-item` class
-    $classes[] = 'menu-item';
+    if ($item->type === 'title') {
+        $classes[] = 'menu-title';
+    } else {
+        $classes[] = 'menu-item';
+    }
 
     // Re-add core `menu-item-has-children` class on parent elements
     if ($item->is_subitem) {

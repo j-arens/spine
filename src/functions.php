@@ -48,6 +48,7 @@ $spine_includes = [
   '/scripts/php/clean-up.php',
   '/scripts/php/nice-search.php',
   '/scripts/php/disable-trackbacks.php',
+  '/scripts/php/nav-titles.php'
 ];
 
 array_walk($spine_includes, function ($file) {

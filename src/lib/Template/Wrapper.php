@@ -1,6 +1,6 @@
 <?php
 
-include_once(get_stylesheet_directory() . '/lib/Template/WrapperInterface.php');
+require_once get_template_directory() . '/lib/Template/WrapperInterface.php';
 
 class Wrapper implements WrapperInterface {
 

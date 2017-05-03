@@ -41,19 +41,19 @@ add_action('after_switch_theme', function () {
  */
 
 $spine_includes = [
-  '/scripts/php/helpers.php',
-  '/scripts/php/setup.php',
-  '/scripts/php/filters.php',
-  '/scripts/php/js-to-footer.php',
-  '/scripts/php/clean-up.php',
-  '/scripts/php/nice-search.php',
-  '/scripts/php/disable-trackbacks.php',
-  '/scripts/php/nav-titles.php',
-  '/scripts/php/custom-login.php'
+  'helpers',
+  'setup',
+  'filters',
+  'js-to-footer',
+  'clean-up',
+  'nice-search',
+  'disable-trackbacks',
+  'nav-titles',
+  'custom-login'
 ];
 
 array_walk($spine_includes, function ($file) {
-    if (!locate_template($file, true, true)) {
+    if (!locate_template('/scripts/php' . $file . '.php', true, true)) {
         trigger_error(sprintf(__('Error locating %s for inclusion', 'spine'), $file), E_USER_ERROR);
     }
 });

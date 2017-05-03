@@ -85,7 +85,7 @@ gulp.task('styles', () => gulp.src('./src/styles/*.css')
 * Javascript
 */
 gulp.task('js', () => gulp.src('./src/scripts/js/main.js')
-    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(webpack(require('./webpack.bundle.js')))
     .pipe(gulp.dest(env.distPath + '/scripts/js'))
 );
 

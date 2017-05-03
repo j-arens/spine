@@ -49,7 +49,8 @@ $spine_includes = [
   'nice-search',
   'disable-trackbacks',
   'nav-titles',
-  'custom-login'
+  'custom-login',
+  'remove-editor-functions'
 ];
 
 array_walk($spine_includes, function ($file) {

@@ -1,0 +1,65 @@
+/**
+* Login styles
+*/
+body.login div#login {
+
+    /**
+    * Logo / link
+    */
+    & h1 a {
+        /*background-image: url();*/
+    }
+
+    /**
+    * Login form
+    */
+    & form#loginform {
+
+
+        /**
+        * Labels
+        */
+        & p label {
+
+        }
+
+        & p.forgetmenot { /* remember me label */
+
+        }
+
+        /**
+        * Inputs
+        */
+        & input#user-login { /* username input */
+
+        }
+
+        & input#user_pass { /* password input */
+
+        }
+
+        & input#rememberme { /* remember me checkbox */
+
+        }
+
+        /**
+        * Buttons
+        */
+        & p.submit input#wp-submit { /* login button */
+            /*border-color: ;*/
+            /*box-shadow: 0 1px 0 your-color;*/
+            /*text-shadow: 0 -1px 1px your-color, 1px 0 1px your-color, 0 1px 1px your-color, -1px 0 1px your-color;*/
+        }
+    }
+
+    /**
+    * Links
+    */
+    & p#nav a { /* lost password link */
+
+    }
+
+    & p#backtoblog a { /* back to site link */
+
+    }
+}

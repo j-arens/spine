@@ -69,7 +69,7 @@ const plugins = [
   flexbug()
 ];
 
-gulp.task('styles', () => gulp.src('./src/styles/style.css')
+gulp.task('styles', () => gulp.src('./src/styles/*.css')
     .pipe(sourcemaps.init())
     .pipe(postcss(plugins))
     .pipe(nano({

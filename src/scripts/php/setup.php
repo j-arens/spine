@@ -77,12 +77,4 @@ add_action('after_setup_theme', function () {
     }
 
     add_action( 'admin_menu', 'remove_menus' );
-
-    /**
-    * Embed override css
-    */
-    // add_action('wp_enqueue_styles', function() {
-        
-    // });
-
 });

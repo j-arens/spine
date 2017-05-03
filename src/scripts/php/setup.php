@@ -1,13 +1,40 @@
 <?php
 
-include_once(get_stylesheet_directory() . '/lib/Template.php');
+include_once get_template_directory() . '/lib/Template.php';
 
 /**
  * Theme assets
  */
  add_action('wp_enqueue_scripts', function () {
-     wp_enqueue_style('spine-style', get_stylesheet_uri(), null, time() );
-     wp_enqueue_script('spine-js', asset_path( 'scripts/js/bundle.js' ), ['jquery'], null, time(), true);
+
+    //  theme css
+     wp_enqueue_style(
+         'spine-css', 
+         get_stylesheet_uri(), 
+         null, 
+         filemtime(get_template_directory() . '/style.css'),
+         'all'
+    );
+
+    //  override css
+     wp_enqueue_style(
+        'spine-override-css', 
+        get_template_directory_uri() . '/override.css', 
+        ['spine-style'], 
+        filemtime(get_template_directory() . '/override.css'),
+        'all'
+    );
+
+    // theme js
+    wp_enqueue_script(
+        'spine-js', 
+        asset_path( 'scripts/js/bundle.js' ), 
+        ['jquery'], 
+        null, 
+        filemtime(get_template_directory() . '/scripts/js/bundle.js'), 
+        true
+    );
+
  }, 100);
 
 /**
@@ -50,24 +77,12 @@ add_action('after_setup_theme', function () {
     }
 
     add_action( 'admin_menu', 'remove_menus' );
-});
 
-/**
- * Register sidebars
- */
-// add_action('widgets_init', function () {
-//     $config = [
-//         'before_widget' => '<section class="widget %1$s %2$s">',
-//         'after_widget'  => '</section>',
-//         'before_title'  => '<h3>',
-//         'after_title'   => '</h3>'
-//     ];
-//     register_sidebar([
-//         'name'          => __('Primary', 'spine'),
-//         'id'            => 'sidebar-primary'
-//     ] + $config);
-//     register_sidebar([
-//         'name'          => __('Footer', 'spine'),
-//         'id'            => 'sidebar-footer'
-//     ] + $config);
-// });
+    /**
+    * Embed override css
+    */
+    // add_action('wp_enqueue_styles', function() {
+        
+    // });
+
+});

@@ -1,7 +1,5 @@
 <?php
 
-namespace Spine\DisableTrackbacks;
-
 /**
 * Disables trackbacks/pingbacks
 */
@@ -9,17 +7,17 @@ namespace Spine\DisableTrackbacks;
 /**
 * Disable pingback XMLRPC method
 */
-function filter_xmlrpc_method($methods) {
+function dpi_spine_filter_xmlrpc_method($methods) {
   unset($methods['pingback.ping']);
   return $methods;
 }
 
-add_filter('xmlrpc_methods', __NAMESPACE__ . '\\filter_xmlrpc_method', 10, 1);
+add_filter('xmlrpc_methods', 'dpi_spine_filter_xmlrpc_method', 10, 1);
 
 /**
 * Remove pingback header
 */
-function filter_headers($headers) {
+function dpi_spine_filter_headers($headers) {
   if (isset($headers['X-Pingback'])) {
     unset($headers['X-Pingback']);
   }
@@ -27,12 +25,12 @@ function filter_headers($headers) {
   return $headers;
 }
 
-add_filter('wp_headers', __NAMESPACE__ . '\\filter_headers', 10, 1);
+add_filter('wp_headers', 'dpi_spine_filter_headers', 10, 1);
 
 /**
 * Kill trackback rewrite rule
 */
-function filter_rewrites($rules) {
+function dpi_spine_filter_rewrites($rules) {
   foreach ($rules as $rule => $rewrite) {
     if (preg_match('/trackback\/\?\$$/i', $rule)) {
       unset($rules[$rule]);
@@ -42,12 +40,12 @@ function filter_rewrites($rules) {
   return $rules;
 }
 
-add_filter('rewrite_rules_array', __NAMESPACE__ . '\\filter_rewrites');
+add_filter('rewrite_rules_array', 'dpi_spine_filter_rewrites');
 
 /**
 * Kill bloginfo('pingback_url')
 */
-function kill_pingback_url($output, $show) {
+function dpi_spine_kill_pingback_url($output, $show) {
   if ($show === 'pingback_url') {
     $output = '';
   }
@@ -55,15 +53,15 @@ function kill_pingback_url($output, $show) {
   return $output;
 }
 
-add_filter('bloginfo_url', __NAMESPACE__ . '\\kill_pingback_url', 10, 2);
+add_filter('bloginfo_url', 'dpi_spine_kill_pingback_url', 10, 2);
 
 /**
 * Disable XMLRPC call
 */
-function kill_xmlrpc($action) {
+function dpi_spine_kill_xmlrpc($action) {
   if ($action === 'pingback.ping') {
     wp_die('Pingbacks are not supported', 'Not Allowed!', ['response' => 403]);
   }
 }
 
-add_action('xmlrpc_call', __NAMESPACE__ . '\\kill_xmlrpc');
+add_action('xmlrpc_call', 'dpi_spine_kill_xmlrpc');

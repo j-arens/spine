@@ -1,7 +1,5 @@
 <?php
 
-namespace Spine\Nav;
-
 /**
 * Cleaner walker for wp_nav_menu()
 *

@@ -69,7 +69,7 @@ const plugins = [
   flexbug()
 ];
 
-gulp.task('styles', () => gulp.src('./src/styles/*.css')
+gulp.task('styles', () => gulp.src('./source/styles/*.css')
     .pipe(sourcemaps.init())
     .pipe(postcss(plugins))
     .pipe(nano({
@@ -84,12 +84,12 @@ gulp.task('styles', () => gulp.src('./src/styles/*.css')
 /**
 * Javascript
 */
-gulp.task('js', () => gulp.src('./src/scripts/js/main.js')
+gulp.task('js', () => gulp.src('./source/scripts/js/main.js')
     .pipe(webpack(require('./webpack.bundle.js')))
     .pipe(gulp.dest(env.distPath + '/scripts/js'))
 );
 
-gulp.task('single-js', () => gulp.src('./src/scripts/js/single/**/*.js')
+gulp.task('single-js', () => gulp.src('./source/scripts/js/single/**/*.js')
     .pipe(named())
     .pipe(webpack(require('./webpack.single.js')))
     .pipe(gulp.dest(env.distPath + '/scripts/js'))
@@ -99,11 +99,11 @@ gulp.task('single-js', () => gulp.src('./src/scripts/js/single/**/*.js')
 * Assets
 */
 gulp.task('assets', () => {
-  const icons = gulp.src('./src/assets/icons/*.+(jpg|jpeg|gif|png|svg)')
+  const icons = gulp.src('./source/assets/icons/*.+(jpg|jpeg|gif|png|svg)')
                     .pipe(imagemin())
                     .pipe(gulp.dest(env.distPath + '/assets/icons'));
 
-  const images = gulp.src('./src/assets/images/*.+(jpg|jpeg|gif|png|svg)')
+  const images = gulp.src('./source/assets/images/*.+(jpg|jpeg|gif|png|svg)')
                       .pipe(imagemin())
                       .pipe(gulp.dest(env.distPath + '/assets/images'));
 
@@ -113,7 +113,7 @@ gulp.task('assets', () => {
 /**
 * Migrate static files
 */
-gulp.task('migrate', () => gulp.src('./src/**/*+(screenshot.png|.php|.es5.js)', {base: './src'})
+gulp.task('migrate', () => gulp.src('./source/**/*+(screenshot.png|.php|.es5.js)', {base: './source'})
     .pipe(gulp.dest(env.distPath))
 );
 
@@ -186,19 +186,19 @@ gulp.task('ftp', function() {
 */
 gulp.task('watch', function() {
   // styles
-  gulp.watch('./src/styles/**/*.css', ['styles']);
+  gulp.watch('./source/styles/**/*.css', ['styles']);
 
   // js scripts
-  gulp.watch('./src/scripts/js/**/*.js', ['js', 'single-js']);
+  gulp.watch('./source/scripts/js/**/*.js', ['js', 'single-js']);
 
   //php
-  gulp.watch('./src/**/*.php', ['migrate']);
+  gulp.watch('./source/**/*.php', ['migrate']);
 
   // images
-  gulp.watch('./src/assets/images/*', ['assets']);
+  gulp.watch('./source/assets/images/*', ['assets']);
 
   // icons
-  gulp.watch('./src/assets/icons/*', ['assets']);
+  gulp.watch('./source/assets/icons/*', ['assets']);
 
   // dev dist
   if (env.dev) {

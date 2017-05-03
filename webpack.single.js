@@ -30,7 +30,6 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
      compressor: { warnings: false },
-     mangle: { except: ['window.dpiSmMenuEditor'] },
      output: { comments: false },
      sourceMap: true
    }),

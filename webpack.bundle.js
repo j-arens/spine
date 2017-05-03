@@ -5,7 +5,7 @@ const nodeEnv = process.env.NODE_ENV || 'production';
 
 module.exports = {
   devtool: 'source-map',
-  entry: ['babel-polyfill', './src/scripts/js/main.js'],
+  entry: ['babel-polyfill', './source/scripts/js/main.js'],
   output: {
     filename: 'bundle.js'
   },
@@ -33,7 +33,6 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
      compressor: { warnings: false },
-     mangle: { except: ['window.dpiSmMenuEditor'] },
      output: { comments: false },
      sourceMap: true
    }),

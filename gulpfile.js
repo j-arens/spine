@@ -34,7 +34,7 @@ const env = {
   dev: argv.dev || true,
   prod: argv.production || false,
   staging: argv.staging || false,
-  distPath: './dpi-spine',
+  distPath: './distribution/dpi-spine',
   devPath: 'C:/Users/DPI/Desktop/dev/wordpress/wordpress/wp-content/themes',
   devUrl: 'localhost'
 }
@@ -139,8 +139,8 @@ gulp.task('bsync', () => bsync.init({proxy: env.devUrl}));
 /**
 * Local deployment
 */
-const distSrc = './dpi-spine/**/*';
-const distBase = {base: './dpi-spine'};
+const distSrc = '.distribution/dpi-spine/**/*';
+const distBase = {base: '.distribution/dpi-spine'};
 
 gulp.task('localDeploy', () => gulp.src(distSrc, distBase)
     .pipe(segregate(distSrc, distBase))
@@ -159,7 +159,7 @@ gulp.task('ftp', function() {
     host: '',
     port: '',
     remoteFolder: './public_html/wp-content/themes',
-    glob: ['./dpi-spine/**']
+    glob: ['.distribution/dpi-spine/**']
   }
 
   const connection = ftp.create({
@@ -202,7 +202,7 @@ gulp.task('watch', function() {
 
   // dev dist
   if (env.dev) {
-    gulp.watch('./dpi-spine/**/*', ['localDeploy']);
+    gulp.watch('.distribution/dpi-spine/**/*', ['localDeploy']);
   }
 });
 

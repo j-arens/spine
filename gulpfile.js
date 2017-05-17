@@ -35,7 +35,7 @@ const env = {
   prod: argv.production || false,
   staging: argv.staging || false,
   distPath: './distribution/dpi-spine',
-  devPath: 'C:/Users/DPI/Desktop/dev/wordpress/wordpress/wp-content/themes',
+  devPath: 'C:/Users/DPI/Desktop/dev/wordpress/ctr-dawsonville/wp-content/themes',
   devUrl: 'localhost'
 }
 
@@ -78,7 +78,7 @@ gulp.task('styles', () => gulp.src('./source/styles/*.css')
       reduceIdents: false
     }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(env.distPath))
+    .pipe(gulp.dest(path.resolve(env.distPath)))
 );
 
 /**
@@ -86,13 +86,13 @@ gulp.task('styles', () => gulp.src('./source/styles/*.css')
 */
 gulp.task('js', () => gulp.src('./source/scripts/js/main.js')
     .pipe(webpack(require('./webpack.bundle.js')))
-    .pipe(gulp.dest(env.distPath + '/scripts/js'))
+    .pipe(gulp.dest(path.resolve(env.distPath + '/scripts/js')))
 );
 
 gulp.task('single-js', () => gulp.src('./source/scripts/js/single/**/*.js')
     .pipe(named())
     .pipe(webpack(require('./webpack.single.js')))
-    .pipe(gulp.dest(env.distPath + '/scripts/js'))
+    .pipe(gulp.dest(path.resolve(env.distPath + '/scripts/js')))
 );
 
 /**
@@ -101,11 +101,11 @@ gulp.task('single-js', () => gulp.src('./source/scripts/js/single/**/*.js')
 gulp.task('assets', () => {
   const icons = gulp.src('./source/assets/icons/*.+(jpg|jpeg|gif|png|svg)')
                     .pipe(imagemin())
-                    .pipe(gulp.dest(env.distPath + '/assets/icons'));
+                    .pipe(gulp.dest(path.resolve(env.distPath + '/assets/icons')));
 
   const images = gulp.src('./source/assets/images/*.+(jpg|jpeg|gif|png|svg)')
                       .pipe(imagemin())
-                      .pipe(gulp.dest(env.distPath + '/assets/images'));
+                      .pipe(gulp.dest(path.resolve(env.distPath + '/assets/images')));
 
   return merge(icons, images);
 });
@@ -114,7 +114,7 @@ gulp.task('assets', () => {
 * Migrate static files
 */
 gulp.task('migrate', () => gulp.src('./source/**/*+(screenshot.png|.php|.es5.js)', {base: './source'})
-    .pipe(gulp.dest(env.distPath))
+    .pipe(gulp.dest(path.resolve(env.distPath)))
 );
 
 /**
@@ -139,12 +139,12 @@ gulp.task('bsync', () => bsync.init({proxy: env.devUrl}));
 /**
 * Local deployment
 */
-const distSrc = '.distribution/dpi-spine/**/*';
-const distBase = {base: '.distribution/dpi-spine'};
+const distSrc = './distribution/dpi-spine/**/*';
+const distBase = {base: './distribution/dpi-spine'};
 
 gulp.task('localDeploy', () => gulp.src(distSrc, distBase)
     .pipe(segregate(distSrc, distBase))
-    .pipe(gulp.dest(env.devPath + '/dpi-spine'))
+    .pipe(gulp.dest(path.resolve(env.devPath + '/dpi-spine')))
     .pipe(bsync.stream())
 );
 
@@ -159,7 +159,7 @@ gulp.task('ftp', function() {
     host: '',
     port: '',
     remoteFolder: './public_html/wp-content/themes',
-    glob: ['.distribution/dpi-spine/**']
+    glob: ['./distribution/dpi-spine/**']
   }
 
   const connection = ftp.create({
@@ -202,7 +202,7 @@ gulp.task('watch', function() {
 
   // dev dist
   if (env.dev) {
-    gulp.watch('.distribution/dpi-spine/**/*', ['localDeploy']);
+    gulp.watch('./distribution/dpi-spine/**/*', ['localDeploy']);
   }
 });
 
@@ -215,6 +215,6 @@ gulp.task('build-watch', ['build', 'watch']);
 
 gulp.task('dev', ['build', 'bsync', 'localDeploy', 'watch']);
 
-gulp.task('deploy', ['sequence']);
+// gulp.task('deploy', ['sequence']);
 
 gulp.task('default', ['dev']);

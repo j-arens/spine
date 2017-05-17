@@ -54,7 +54,7 @@ $spine_includes = [
 ];
 
 array_walk($spine_includes, function ($file) {
-    if (!locate_template('/scripts/php' . $file . '.php', true, true)) {
+    if (!locate_template('/scripts/php/' . $file . '.php', true, true)) {
         trigger_error(sprintf(__('Error locating %s for inclusion', 'spine'), $file), E_USER_ERROR);
     }
 });

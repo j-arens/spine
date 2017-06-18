@@ -1,0 +1,24 @@
+table {
+    border-collapse: collapse;
+    margin: calc(var(--base-spacing) / 2) 0;
+    table-layout: fixed;
+    width: 100%;
+}
+
+th {
+    border-bottom: 1px solid color(var(--color-border-base) shade(15%));
+    font-weight: bold;
+    padding: calc(var(--base-spacing)/ 2) 0;
+    text-align: left;
+}
+
+td {
+    border-bottom: var(--base-border);
+    padding: calc(var(--base-spacing) / 2);
+}
+
+tr,
+td,
+tr {
+    vertical-align: middle;
+}

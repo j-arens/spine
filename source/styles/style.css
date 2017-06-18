@@ -1,18 +1,21 @@
-@import './vendor/_index';
-@import './base/_index';
-@import './grid/_index';
-@import './layouts/_index';
-@import './components/_index';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700');
+
+@import 'vendor/_index';
+@import 'settings/_index';
+@import 'utils/_index';
+@import 'base/_index';
+@import 'layout/_index';
+@import 'components/_index';
 
 /*
 Theme Name:         DPI Spine Starter Theme
 Theme URI:          http://diocesan.com
-Description:        Spine is a WordPress starter theme.
-Version:            1.0.3
+Description:        Spine is a WordPress starter theme based off of <a href="https://github.com/roots/sage/tree/8.5.0>Sage v8.5</a> by <a href="https://roots.io/">Roots</a>.
+Version:            1.0.4
 Author:             Josh Arens
 Author URI:         https://github.com/j-arens
 Text Domain:        spine
 License:            MIT License
 License URI:        http://opensource.org/licenses/MIT
-GitHub Theme URI:   https://github.com/<owner>/<repo>
+GitHub Theme URI:   https://github.com/j-arens/spine
 */

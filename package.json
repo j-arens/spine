@@ -28,6 +28,7 @@
     "gulp-sourcemaps": "^1.9.1",
     "gulp-watch": "^4.3.11",
     "merge-stream": "^1.0.1",
+    "postcss-color-function": "^4.0.0",
     "postcss-cssnext": "^2.9.0",
     "postcss-flexbugs-fixes": "^2.1.0",
     "postcss-for": "^2.1.1",

@@ -26,6 +26,7 @@ const cssImport = require('postcss-import');
 const cssFor = require('postcss-for');
 const nano = require('gulp-cssnano');
 const flexbug = require('postcss-flexbugs-fixes');
+const color = require('postcss-color-function');
 
 // js processors
 const webpack = require('webpack-stream');
@@ -66,6 +67,7 @@ const plugins = [
       }
     }
   }),
+  color(),
   flexbug()
 ];
 

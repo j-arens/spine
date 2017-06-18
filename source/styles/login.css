@@ -1,19 +1,19 @@
 /**
 * Login styles
 */
-body.login div#login {
+body.login {
 
     /**
     * Logo / link
     */
-    & h1 a {
+    & div#login h1 a {
         /*background-image: url();*/
     }
 
     /**
     * Login form
     */
-    & form#loginform {
+    & div#login form#loginform {
 
 
         /**
@@ -55,11 +55,11 @@ body.login div#login {
     /**
     * Links
     */
-    & p#nav a { /* lost password link */
+    & div#login p#nav a { /* lost password link */
 
     }
 
-    & p#backtoblog a { /* back to site link */
+    & div#login p#backtoblog a { /* back to site link */
 
     }
 }

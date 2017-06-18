@@ -1,3 +1,6 @@
 @import '_general';
 @import '_typography';
+@import '_forms';
+@import '_tables';
+@import '_lists';
 @import '_wp-classes';

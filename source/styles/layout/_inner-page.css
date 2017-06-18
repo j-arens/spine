@@ -1,4 +1,4 @@
-body.page,
+body:not(.home).page,
 body.single,
 body.archive {
 

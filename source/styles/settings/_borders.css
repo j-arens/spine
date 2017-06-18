@@ -1,0 +1,4 @@
+:root {
+    --base-border: 1px solid var(--color-border-base);
+    --base-border-radius: 3px;
+}

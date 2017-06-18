@@ -1,0 +1,15 @@
+:root {
+    /* Form borders */
+    --form-border-color:       var(--color-border-base);
+    --form-border-color-hover: color(var(--color-border-base) shade(10%));
+    --form-border-color-focus: var(--color-accent);
+    --form-border-radius:      var(--base-border-radius);
+
+    /* Form box shadows */
+    --form-box-shadow:         inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    --form-box-shadow-focus:   var(--form-box-shadow), 0 0 5px rgba(color(var(--form-border-color-focus) shade(5%)), 0.7);
+
+    /* Form typography */
+    --form-font-size:          var(--base-font-size);
+    --form-font-family:        var(--font-family-base);
+}

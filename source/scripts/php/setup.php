@@ -1,7 +1,5 @@
 <?php
 
-// include_once get_template_directory() . '/lib/Template.php';
-
 use Spine\Lib\Template;
 use Spine\Scripts\PHP\assetPath;
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace Spine\Lib\Assets;
+
 interface ManifestInterface {
 
   /**

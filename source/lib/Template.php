@@ -1,7 +1,12 @@
 <?php
 
-require_once get_stylesheet_directory() . '/lib/Template/Partial.php';
-require_once get_stylesheet_directory() . '/lib/Template/WrapperInterface.php';
+namespace Spine\Lib;
+
+use Spine\Lib\Template\Partial;
+use Spine\Lib\Template\WrapperInterface;
+
+// require_once get_stylesheet_directory() . '/lib/Template/Partial.php';
+// require_once get_stylesheet_directory() . '/lib/Template/WrapperInterface.php';
 
 class Template {
 

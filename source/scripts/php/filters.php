@@ -1,7 +1,7 @@
 <?php
 
-include_once get_template_directory() . '/lib/Template.php';
-include_once get_template_directory() . '/lib/Template/Wrapper.php';
+use Spine\Lib\Template;
+use Spine\Lib\Template\Wrapper;
 
 /**
  * Add <body> classes
@@ -16,9 +16,10 @@ add_filter('body_class', function (array $classes) {
     }
 
     // Add class if sidebar is active
-    if (display_sidebar()) {
+    if (displaySidebar()) {
         $classes[] = 'sidebar-primary';
     }
+    
     return $classes;
 });
 

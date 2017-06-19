@@ -1,5 +1,7 @@
 <?php
 
+namespace Spine\Lib\Template;
+
 interface WrapperInterface {
 
   /**
@@ -7,6 +9,8 @@ interface WrapperInterface {
   */
 
   public function wrap();
+
   public function unwrap();
+  
   public function slug();
 }

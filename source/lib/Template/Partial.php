@@ -1,5 +1,7 @@
 <?php
 
+namespace Spine\Lib\Template;
+
 class Partial {
 
   protected static $cache = [];

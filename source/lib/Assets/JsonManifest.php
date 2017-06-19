@@ -1,6 +1,10 @@
 <?php
 
-require_once get_template_directory() . '/lib/Assets/ManifestInterface.php';
+namespace Spine\Lib\Assets;
+
+use Spine\Lib\Assets\ManifestInterface;
+
+// require_once get_template_directory() . '/lib/Assets/ManifestInterface.php';
 
 class JsonManifest implements ManifestInterface {
   protected $manifest = [];

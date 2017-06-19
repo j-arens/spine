@@ -1,6 +1,10 @@
 <?php
 
-require_once get_template_directory() . '/lib/Assets/ManifestInterface.php';
+namespace Spine\Lib;
+
+use Spine\Lib\Assets\ManifestInterface;
+
+// require_once get_template_directory() . '/lib/Assets/ManifestInterface.php';
 
 /**
 * Class Template

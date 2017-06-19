@@ -6,8 +6,6 @@ const path = require('path');
 // utils
 const argv = require('yargs');
 const segregate = require('gulp-watch');
-const ftp = require('vinyl-ftp');
-const sequence = require('run-sequence');
 const bsync = require('browser-sync');
 const merge = require('merge-stream');
 const named = require('vinyl-named');
@@ -115,23 +113,9 @@ gulp.task('assets', () => {
 /**
 * Migrate static files
 */
-gulp.task('migrate', () => gulp.src('./source/**/*+(screenshot.png|.php|.es5.js)', {base: './source'})
+gulp.task('migrate', () => gulp.src('./source/**/*+(screenshot.png|.json|.lock|.txt|.php|.es5.js)', {base: './source'})
     .pipe(gulp.dest(path.resolve(env.distPath)))
 );
-
-/**
-* Synchronous actions
-*/
-gulp.task('sequence', () => sequence(
-  'styles',
-  'js',
-  'single-js',
-  'images',
-  'icons',
-  'migrate',
-  'screenshot',
-  'ftp'
-));
 
 /**
 * Browsersync init
@@ -149,39 +133,6 @@ gulp.task('localDeploy', () => gulp.src(distSrc, distBase)
     .pipe(gulp.dest(path.resolve(env.devPath + '/dpi-spine')))
     .pipe(bsync.stream())
 );
-
-/**
-* Ftp deployment
-*/
-gulp.task('ftp', function() {
-
-  const ftpConfig = {
-    user: '',
-    password: '',
-    host: '',
-    port: '',
-    remoteFolder: './public_html/wp-content/themes',
-    glob: ['./distribution/dpi-spine/**']
-  }
-
-  const connection = ftp.create({
-      host: ftpConfig.host,
-      port: ftpConfig.port,
-      user: ftpConfig.user,
-      password: ftpConfig.password,
-      parallel: 10,
-      log(err) {
-        console.log(err);
-      },
-      debug(debug) {
-        console.log(debug);
-      }
-    });
-
-  return gulp.src(ftpConfig.glob, {base: '.', buffer: false})
-             .pipe(connection.newer(ftpConfig.remoteFolder))
-             .pipe(connection.dest(ftpConfig.remoteFolder))
-});
 
 /**
 * Watch tasks
@@ -216,7 +167,5 @@ gulp.task('build', ['styles', 'js', 'single-js', 'assets', 'migrate']);
 gulp.task('build-watch', ['build', 'watch']);
 
 gulp.task('dev', ['build', 'bsync', 'localDeploy', 'watch']);
-
-// gulp.task('deploy', ['sequence']);
 
 gulp.task('default', ['dev']);

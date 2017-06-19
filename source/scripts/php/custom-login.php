@@ -1,6 +1,8 @@
 <?php
 
-class DPI_Custom_Login {
+namespace Spine\Scripts\PHP;
+
+class CustomLogin {
 
     private $logoLink;
     private $pathToStylesheet;
@@ -42,7 +44,7 @@ class DPI_Custom_Login {
 }
 
 add_action('init', function() {
-    $customLogin = new DPI_Custom_Login();
+    $customLogin = new CustomLogin();
     $customLogin->setLogoLink('/');
     $customLogin->setPathToStylesheet(get_template_directory() . '/login.css');
     $customLogin->init();

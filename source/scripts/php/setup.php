@@ -1,6 +1,9 @@
 <?php
 
-include_once get_template_directory() . '/lib/Template.php';
+// include_once get_template_directory() . '/lib/Template.php';
+
+use Spine\Lib\Template;
+use Spine\Scripts\PHP\assetPath;
 
 /**
 * Change admin footer message
@@ -35,7 +38,7 @@ add_filter('admin_footer_text', function() {
     // theme js
     wp_enqueue_script(
         'spine-js', 
-        asset_path( 'scripts/js/bundle.js' ), 
+        assetPath( 'scripts/js/bundle.js' ), 
         ['jquery'], 
         null, 
         filemtime(get_template_directory() . '/scripts/js/bundle.js'), 
@@ -78,10 +81,8 @@ add_action('after_setup_theme', function () {
     /**
     * remove unwanted menu pages in admin dashboard
     */
-    function remove_menus() {
-    	remove_menu_page( 'edit.php' );
+    add_action( 'admin_menu', function() {
+        remove_menu_page( 'edit.php' );
     	remove_menu_page( 'edit-comments.php' );
-    }
-
-    add_action( 'admin_menu', 'remove_menus' );
+    });
 });

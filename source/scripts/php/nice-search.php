@@ -1,10 +1,12 @@
 <?php
 
+namespace Spine\Scripts\PHP;
+
 /**
 * Redirects search results from /?s=query to /search/query/, converts %20 to +
 */
 
-function dpi_spine_redirect() {
+function spineRedirect() {
   global $wp_rewrite;
 
   if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->get_search_permastruct()) {
@@ -19,10 +21,10 @@ function dpi_spine_redirect() {
   }
 }
 
-add_action('template_redirect', 'dpi_spine_redirect');
+add_action('template_redirect', __NAMESPACE__ . '\\spineRedirect');
 
-function dpi_spine_rewrite($url) {
+function spineRewrite($url) {
   return str_replace('/?s=', '/search/', $url);
 }
 
-add_filter('wpseo_json_ld_search_url', 'dpi_spine_rewrite');
+add_filter('wpseo_json_ld_search_url', __NAMESPACE__ . '\\spineRewrite');

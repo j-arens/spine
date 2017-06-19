@@ -1,20 +1,20 @@
 <?php
 
-include_once get_template_directory() . '/lib/Asset.php';
-include_once get_template_directory() . '/lib/Assets/JsonManifest.php';
-include_once get_template_directory() . '/lib/Template.php';
+use Spine\Lib\Asset;
+use Spine\Lib\Assets\JsonManifest;
+use Spine\Lib\Template;
 
 
 function template($layout = 'base') {
   return Template::$instances[$layout];
 }
 
-function template_part($template, array $context = [], $layout = 'base') {
+function templatePart($template, array $context = [], $layout = 'base') {
   extract($context);
   include template($layout)->partial($template);
 }
 
-function asset_path($filename) {
+function assetPath($filename) {
   static $manifest;
   isset($manifest) || $manifest = new JsonManifest(get_stylesheet_directory() . '/' . Asset::$dist . '/assets.json');
   return (string) new Asset($filename, $manifest);
@@ -23,14 +23,14 @@ function asset_path($filename) {
 /**
  * Determine whether to show the sidebar
  */
-function display_sidebar() {
+function displaySidebar() {
   static $display;
   isset($display) || $display = !in_array(true, [
     is_404(),
     is_search(),
     is_front_page()
   ]);
-  return apply_filters('spine/display_sidebar', $display);
+  return apply_filters('spine/displaySidebar', $display);
 }
 
 /**

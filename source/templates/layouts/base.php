@@ -1,6 +1,8 @@
 <?php
-  include_once(get_stylesheet_directory() . '/lib/Template.php');
-  include_once(get_stylesheet_directory() . '/scripts/php/helpers.php');
+
+  use Spine\Lib\Template;
+  use Spine\Scripts\PHP\displaySidebar;
+
  ?>
 
 <!doctype html>
@@ -20,7 +22,7 @@
       <main class="main">
         <?php load_template(template()->main()); ?>
       </main>
-      <?php if (display_sidebar()) : ?>
+      <?php if (displaySidebar()) : ?>
         <aside class="sidebar">
           <?php template_part('partials/sidebar'); ?>
         </aside>

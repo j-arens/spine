@@ -1,5 +1,7 @@
 <?php
 
+namespace Spine\Scripts\PHP;
+
 /**
 * Clean up wp_head()
 *
@@ -11,7 +13,7 @@
 *
 */
 
-function dpi_spine_head_cleanup() {
+function headCleanup() {
 
   // Originally from http://wpengineer.com/1438/wordpress-header/
   remove_action('wp_head', 'feed_links_extra', 3);
@@ -46,7 +48,7 @@ function dpi_spine_head_cleanup() {
   }
 }
 
-add_action('init', 'dpi_spine_head_cleanup');
+add_action('init', __NAMESPACE__ . '\\headCleanup');
 
 /**
 * Remove the WordPress version from RSS feeds
@@ -56,7 +58,7 @@ add_filter('the_generator', '__return_false');
 /**
 * Clean up language_attributes() used in <html> tag
 */
-function dpi_spine_language_attributes() {
+function languageAttributes() {
   $attributes = [];
 
   if (is_rtl()) {
@@ -74,12 +76,12 @@ function dpi_spine_language_attributes() {
   return $output;
 }
 
-add_filter('language_attributes', 'dpi_spine_language_attributes');
+add_filter('language_attributes', __NAMESPACE__ . '\\languageAttributes');
 
 /**
 * Clean up output of stylesheet <link> tags
 */
-function dpi_spine_clean_style_tag($input) {
+function cleanStyleTag($input) {
   preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
 
   if (empty($matches[2])) {
@@ -91,22 +93,22 @@ function dpi_spine_clean_style_tag($input) {
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
 
-add_filter('style_loader_tag', 'dpi_spine_clean_style_tag');
+add_filter('style_loader_tag', __NAMESPACE__ . '\\cleanStyleTag');
 
 /**
 * Clean up output of <script> tags
 */
-function dpi_spine_clean_script_tag($input) {
+function cleanScriptTag($input) {
   $input = str_replace("type='text/javascript' ", '', $input);
   return str_replace("'", '"', $input);
 }
 
-add_filter('script_loader_tag', 'dpi_spine_clean_script_tag');
+add_filter('script_loader_tag', __NAMESPACE__ . '\\cleanScriptTag');
 
 /**
 * Add and remove body_class() classes
 */
-function dpi_spine_body_class($classes) {
+function bodyClass($classes) {
 
   // Add post/page slug if not present
   if (is_single() || is_page() && !is_front_page()) {
@@ -127,46 +129,46 @@ function dpi_spine_body_class($classes) {
   return $classes;
 }
 
-add_filter('body_class', 'dpi_spine_body_class');
+add_filter('body_class', __NAMESPACE__ . '\\bodyClass');
 
 /**
 * Wrap embedded media as suggested by Readability
 */
-function dpi_spine_embed_wrap($cache) {
+function embedWrap($cache) {
   return '<div class="entry-content-asset">' . $cache . '</div>';
 }
 
-add_filter('embed_oembed_html', 'dpi_spine_embed_wrap');
+add_filter('embed_oembed_html', __NAMESPACE__ . '\\embedWrap');
 
 /**
 * Remove unnecessary dashboard widgets
 */
-function dpi_spine_remove_dashboard_widgets() {
+function dashboardWidgets() {
   remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
   remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
   remove_meta_box('dashboard_primary', 'dashboard', 'normal');
   remove_meta_box('dashboard_secondary', 'dashboard', 'normal');
 }
 
-add_action('admin_init', 'dpi_spine_remove_dashboard_widgets');
+add_action('admin_init', __NAMESPACE__ . '\\dashboardWidgets');
 
 /**
 * Remove unnecessary self-closing tags
 */
-function dpi_spine_remove_self_closing_tags($input) {
+function removeSelfClosingTags($input) {
   return str_replace(' />', '>', $input);
 }
 
-add_filter('get_avatar', 'dpi_spine_remove_self_closing_tags'); // <img />
-add_filter('comment_id_fields', 'dpi_spine_remove_self_closing_tags'); // <input />
-add_filter('post_thumbnail_html', 'dpi_spine_remove_self_closing_tags'); // <img />
+add_filter('get_avatar', __NAMESPACE__ . '\\removeSelfClosingTags'); // <img />
+add_filter('comment_id_fields', __NAMESPACE__ . '\\removeSelfClosingTags'); // <input />
+add_filter('post_thumbnail_html', __NAMESPACE__ . '\\removeSelfClosingTags'); // <img />
 
 /**
 * Don't return the default description in the RSS feed if it hasn't been changed
 */
-function dpi_spine_remove_default_description($bloginfo) {
+function removeDefaultDescription($bloginfo) {
   $default_tagline = 'Just another WordPress site';
   return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }
 
-add_filter('get_bloginfo_rss', 'dpi_spine_remove_default_description');
+add_filter('get_bloginfo_rss', __NAMESPACE__ . '\\removeDefaultDescription');

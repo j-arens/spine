@@ -1,6 +1,10 @@
 <?php
 
-require_once get_template_directory() . '/lib/Template/WrapperInterface.php';
+namespace Spine\Lib\Template;
+
+use Spine\Lib\Template\WrapperInterface;
+
+// require_once get_template_directory() . '/lib/Template/WrapperInterface.php';
 
 class Wrapper implements WrapperInterface {
 

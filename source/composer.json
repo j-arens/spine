@@ -1,0 +1,19 @@
+{
+    "name": "dpi/spine",
+    "description": "WordPress starter theme based on Sage 8.5 by Roots.",
+    "type": "Project",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Josh Arens",
+            "email": "arens.joshua@sbcglobal.net"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4":{
+            "Spine\\Lib\\": "./lib",
+            "Spine\\Scripts\\": "./scripts"
+        }
+    }
+}

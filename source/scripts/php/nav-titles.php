@@ -1,23 +1,25 @@
 <?php
 
-class DPI_Nav_Meta {
+namespace Spine\Scripts\PHP;
+
+class NavTitles {
 
   public function __construct() {
-    add_action('admin_init', [$this, 'add_nav_meta_box']);
+    add_action('admin_init', [$this, 'addNavMetaBox']);
   }
 
-  public function add_nav_meta_box() {
-    add_meta_box(
+  public function addNavMetaBox() {
+    \add_meta_box(
       'custom_menu_heading',
       __('Menu Titles'),
-      [$this, 'nav_menu_cb'],
+      [$this, 'navMenuCb'],
       'nav-menus',
       'side',
       'core'
     );
   }
 
-  public function nav_menu_cb() {
+  public function navMenuCb() {
     wp_enqueue_script( 'dpi-nav-meta-js', get_template_directory_uri() . '/scripts/js/nav-titles.js', ['jquery'], true );
     ?>
     <div id="customheadingdiv" class="taxonomydiv">
@@ -41,4 +43,10 @@ class DPI_Nav_Meta {
   }
 }
 
-new DPI_Nav_Meta();
+if (is_admin()) {
+  global $pagenow;
+  
+  if ($pagenow === 'nav-menus.php') {
+    new NavTitles();
+  }
+}

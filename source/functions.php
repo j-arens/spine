@@ -4,6 +4,8 @@
  * Do not edit anything in this file unless you know what you're doing
  */
 
+ require __DIR__ . '/vendor/autoload.php';
+
 /**
  * Here's what's happening with these hooks:
  * 1. WordPress detects theme in themes/spine
@@ -40,7 +42,7 @@ add_action('after_switch_theme', function () {
  * Please note that missing files will produce a fatal error.
  */
 
-$spine_includes = [
+$spineIncludes = [
   'helpers',
   'setup',
   'filters',
@@ -53,7 +55,7 @@ $spine_includes = [
   'remove-editor-functions'
 ];
 
-array_walk($spine_includes, function ($file) {
+array_walk($spineIncludes, function ($file) {
     if (!locate_template('/scripts/php/' . $file . '.php', true, true)) {
         trigger_error(sprintf(__('Error locating %s for inclusion', 'spine'), $file), E_USER_ERROR);
     }

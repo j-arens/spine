@@ -38,7 +38,6 @@ add_filter('admin_footer_text', function() {
         'spine-js', 
         assetPath( 'scripts/js/bundle.js' ), 
         ['jquery'], 
-        null, 
         filemtime(get_template_directory() . '/scripts/js/bundle.js'), 
         true
     );

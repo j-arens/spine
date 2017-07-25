@@ -8,5 +8,4 @@ $baseDir = dirname($vendorDir);
 return array(
     'Spine\\scripts\\php\\' => array($baseDir . '/scripts/php'),
     'Spine\\lib\\' => array($baseDir . '/lib'),
-    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );

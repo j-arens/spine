@@ -50,8 +50,8 @@ $spineIncludes = [
   'clean-up',
   'nice-search',
   'disable-trackbacks',
-  'nav-titles',
-  'custom-login',
+  'NavTitles',
+  'CustomLogin',
   'remove-editor-functions'
 ];
 

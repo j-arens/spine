@@ -1,10 +1,3 @@
-<?php
-
-  use Spine\Lib\Template;
-  use Spine\Scripts\PHP\displaySidebar;
-
- ?>
-
 <!doctype html>
 <html <?php language_attributes(); ?>>
   <?php get_template_part('partials/head'); ?>
@@ -20,9 +13,9 @@
     ?>
     <div class="wrap" role="document">
       <main class="main">
-        <?php load_template(template()->main()); ?>
+        <?php load_template(Spine\scripts\php\template()->main()); ?>
       </main>
-      <?php if (displaySidebar()) : ?>
+      <?php if (Spine\scripts\php\displaySidebar()) : ?>
         <aside class="sidebar">
           <?php template_part('partials/sidebar'); ?>
         </aside>

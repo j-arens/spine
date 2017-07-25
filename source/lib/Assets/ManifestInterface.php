@@ -1,6 +1,6 @@
 <?php
 
-namespace Spine\Lib\Assets;
+namespace Spine\lib\Assets;
 
 interface ManifestInterface {
 

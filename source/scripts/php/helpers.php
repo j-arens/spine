@@ -1,8 +1,10 @@
 <?php
 
-use Spine\Lib\Asset;
-use Spine\Lib\Assets\JsonManifest;
-use Spine\Lib\Template;
+namespace Spine\scripts\php;
+
+use Spine\lib\Asset;
+use Spine\lib\Assets\JsonManifest;
+use Spine\lib\Template;
 
 
 function template($layout = 'base') {

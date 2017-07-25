@@ -1,6 +1,6 @@
 <?php
 
-namespace Spine\Scripts\PHP;
+namespace Spine\scripts\php;
 
 /**
 * Clean up wp_head()

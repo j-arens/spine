@@ -1,6 +1,6 @@
 <?php
 
-namespace Spine\Scripts\PHP;
+namespace Spine\scripts\php;
 
 class CustomLogin {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spine\Scripts\PHP;
+namespace Spine\scripts\php;
 
 /**
 * Moves all scripts to wp_footer action

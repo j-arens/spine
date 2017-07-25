@@ -9,8 +9,8 @@ class ComposerStaticInita91e0c144d5de79cdec31dc3f48e148c
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'Spine\\Scripts\\' => 14,
-            'Spine\\Lib\\' => 10,
+            'Spine\\scripts\\php\\' => 18,
+            'Spine\\lib\\' => 10,
         ),
         'C' => 
         array (
@@ -19,11 +19,11 @@ class ComposerStaticInita91e0c144d5de79cdec31dc3f48e148c
     );
 
     public static $prefixDirsPsr4 = array (
-        'Spine\\Scripts\\' => 
+        'Spine\\scripts\\php\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/scripts',
+            0 => __DIR__ . '/../..' . '/scripts/php',
         ),
-        'Spine\\Lib\\' => 
+        'Spine\\lib\\' => 
         array (
             0 => __DIR__ . '/../..' . '/lib',
         ),
@@ -115,16 +115,16 @@ class ComposerStaticInita91e0c144d5de79cdec31dc3f48e148c
         'Composer\\Installers\\YawikInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/YawikInstaller.php',
         'Composer\\Installers\\ZendInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZendInstaller.php',
         'Composer\\Installers\\ZikulaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZikulaInstaller.php',
-        'Spine\\Lib\\Asset' => __DIR__ . '/../..' . '/lib/Asset.php',
-        'Spine\\Lib\\Assets\\JsonManifest' => __DIR__ . '/../..' . '/lib/Assets/JsonManifest.php',
-        'Spine\\Lib\\Assets\\ManifestInterface' => __DIR__ . '/../..' . '/lib/Assets/ManifestInterface.php',
-        'Spine\\Lib\\Template' => __DIR__ . '/../..' . '/lib/Template.php',
-        'Spine\\Lib\\Template\\Partial' => __DIR__ . '/../..' . '/lib/Template/Partial.php',
-        'Spine\\Lib\\Template\\Wrapper' => __DIR__ . '/../..' . '/lib/Template/Wrapper.php',
-        'Spine\\Lib\\Template\\WrapperInterface' => __DIR__ . '/../..' . '/lib/Template/WrapperInterface.php',
-        'Spine\\Scripts\\PHP\\CustomLogin' => __DIR__ . '/../..' . '/scripts/php/custom-login.php',
-        'Spine\\Scripts\\PHP\\NavTitles' => __DIR__ . '/../..' . '/scripts/php/nav-titles.php',
-        'Spine\\Scripts\\PHP\\NavWalker' => __DIR__ . '/../..' . '/scripts/php/nav-walker.php',
+        'Spine\\lib\\Asset' => __DIR__ . '/../..' . '/lib/Asset.php',
+        'Spine\\lib\\Assets\\JsonManifest' => __DIR__ . '/../..' . '/lib/Assets/JsonManifest.php',
+        'Spine\\lib\\Assets\\ManifestInterface' => __DIR__ . '/../..' . '/lib/Assets/ManifestInterface.php',
+        'Spine\\lib\\Template' => __DIR__ . '/../..' . '/lib/Template.php',
+        'Spine\\lib\\Template\\Partial' => __DIR__ . '/../..' . '/lib/Template/Partial.php',
+        'Spine\\lib\\Template\\Wrapper' => __DIR__ . '/../..' . '/lib/Template/Wrapper.php',
+        'Spine\\lib\\Template\\WrapperInterface' => __DIR__ . '/../..' . '/lib/Template/WrapperInterface.php',
+        'Spine\\scripts\\php\\CustomLogin' => __DIR__ . '/../..' . '/scripts/php/custom-login.php',
+        'Spine\\scripts\\php\\NavTitles' => __DIR__ . '/../..' . '/scripts/php/nav-titles.php',
+        'Spine\\scripts\\php\\NavWalker' => __DIR__ . '/../..' . '/scripts/php/nav-walker.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -1,7 +1,9 @@
 <?php
 
-use Spine\Lib\Template;
-use Spine\Scripts\PHP\assetPath;
+namespace Spine\scripts\php;
+
+use Spine\lib\Template;
+use Spine\scripts\php\assetPath;
 
 /**
 * Change admin footer message

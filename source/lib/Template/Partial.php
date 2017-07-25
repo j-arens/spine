@@ -1,6 +1,6 @@
 <?php
 
-namespace Spine\Lib\Template;
+namespace Spine\lib\Template;
 
 class Partial {
 

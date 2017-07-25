@@ -1,7 +1,9 @@
 <?php
 
-use Spine\Lib\Template;
-use Spine\Lib\Template\Wrapper;
+namespace Spine\scripts\php;
+
+use Spine\lib\Template;
+use Spine\lib\Template\Wrapper;
 
 /**
  * Add <body> classes

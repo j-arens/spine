@@ -1,8 +1,8 @@
 <?php
 
-namespace Spine\Lib\Template;
+namespace Spine\lib\Template;
 
-use Spine\Lib\Template\WrapperInterface;
+use Spine\lib\Template\WrapperInterface;
 
 // require_once get_template_directory() . '/lib/Template/WrapperInterface.php';
 

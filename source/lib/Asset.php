@@ -1,8 +1,8 @@
 <?php
 
-namespace Spine\Lib;
+namespace Spine\lib;
 
-use Spine\Lib\Assets\ManifestInterface;
+use Spine\lib\Assets\ManifestInterface;
 
 // require_once get_template_directory() . '/lib/Assets/ManifestInterface.php';
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Spine\Lib;
+namespace Spine\lib;
 
-use Spine\Lib\Template\Partial;
-use Spine\Lib\Template\WrapperInterface;
+use Spine\lib\Template\Partial;
+use Spine\lib\Template\WrapperInterface;
 
 // require_once get_stylesheet_directory() . '/lib/Template/Partial.php';
 // require_once get_stylesheet_directory() . '/lib/Template/WrapperInterface.php';

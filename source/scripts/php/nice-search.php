@@ -1,6 +1,6 @@
 <?php
 
-namespace Spine\Scripts\PHP;
+namespace Spine\scripts\php;
 
 /**
 * Redirects search results from /?s=query to /search/query/, converts %20 to +

@@ -40,8 +40,7 @@ input[type="tel"],
 input[type="text"], 
 input[type="time"], 
 input[type="url"], 
-input[type="week"], 
-input:not([type]),
+input[type="week"],
 select[multiple=multiple] {
     box-sizing: inherit;
     background-color: #fff;
@@ -51,7 +50,7 @@ select[multiple=multiple] {
     font-family: var(--form-font-family);
     font-size: var(--form-font-size);
     margin-bottom: calc(var(--base-spacing) / 2);
-    padding: calc(var(--base-spacing / 3)) calc(var(--base-spacing / 3));
+    padding: calc(var(--base-spacing) / 3);
     width: 100%;
     transition: border-color;
 

@@ -1,0 +1,14 @@
+.browserupgrade {
+    background-color: #e32730;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: bold;
+    margin: 3em 0;
+
+    & a {
+        color: blue;
+        text-decoration: underline;
+    }
+}

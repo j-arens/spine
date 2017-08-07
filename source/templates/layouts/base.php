@@ -2,11 +2,23 @@
 <html <?php language_attributes(); ?>>
   <?php get_template_part('partials/head'); ?>
   <body <?php body_class(); ?>>
-    <!--[if IE]>
-      <div class="alert alert-warning">
-        <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'spine'); ?>
-      </div>
-    <![endif]-->
+    
+    <noscript>
+        <p class="browserupgrade">
+            You need to have JavaScript enabled to properly view this site.
+        </p>
+    </noscript>
+
+    <!-- warn IE users to upgrade to a better browser -->
+    <script>
+        if (!(window.ActiveXObject) && 'ActiveXObject' in window) {
+            document.body.insertAdjacentHTML(
+                'afterbegin', 
+                '<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://outdatedbrowser.com/">upgrade your browser</a> to view this site properly.<p>'
+            );
+        }
+    </script>
+
     <?php
       do_action('get_header');
       get_template_part('partials/header');

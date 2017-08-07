@@ -19,6 +19,9 @@
     --color-neutral-lt:        #DDD;
     --color-neutral-dk:        #333;
 
+    --color-white:             #fff;
+    --color-black:             #000;
+
     /* Layout colors */
     --color-background-base:   #fff;
     --color-border-base:       var(--color-neutral-lt);

@@ -1,0 +1,56 @@
+@import 'settings/colors';
+
+/**
+* Login styles
+*/
+body.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-secondary-lt;
+
+    div#login {
+        padding: 3em;
+        background-color: $color-white;
+        border-radius: 3px;
+        box-shadow: 1px 2px 5px 3px rgba(0,0, 0, 0.1);
+    }
+
+    div#login h1 a {
+        background-color: $color-secondary;
+        background-image: url(wp-content/themes/dpi-spine/assets/images/);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 90%;
+        width: 15em;
+        height: 8em;
+        margin: 0 auto;
+        border-radius: 2px;
+    }
+
+    div#login form#loginform {
+        box-shadow: none;
+
+        input#user_login:focus,
+        input#user_pass:focus,
+        input#rememberme:focus {
+            border-color: $color-primary;
+            box-shadow: 0 0 2px rgba(182,6,57,.8);
+        }
+
+        p.submit input#wp-submit {
+            border-color: $color-primary;
+            background: $color-primary;
+            box-shadow: 0 0 5px 1px rgba(30, 30, 30, 0.2);
+            text-shadow: none;
+        }
+    }
+
+    div#login p#nav a {
+        color: $color-primary;
+    }
+
+    div#login p#backtoblog a {
+        color: $color-primary;
+    }
+}

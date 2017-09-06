@@ -1,0 +1,11 @@
+/* Primary colors */
+/* Secondary colors */
+/* Accent colors */
+/* Neutral colors */
+/* Layout colors */
+/* Typography colors */
+/* Form colors */
+/**
+* Login styles
+*/body.login{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ebc99d}body.login div#login{padding:3em;background-color:#fff;border-radius:3px;box-shadow:1px 2px 5px 3px rgba(0,0,0,.1)}body.login div#login h1 a{background-color:#c49a65;background-image:url(wp-content/themes/dpi-spine/assets/images/);background-position:50%;background-repeat:no-repeat;background-size:90%;width:15em;height:8em;margin:0 auto;border-radius:2px}body.login div#login form#loginform{box-shadow:none}body.login div#login form#loginform input#rememberme:focus,body.login div#login form#loginform input#user_login:focus,body.login div#login form#loginform input#user_pass:focus{border-color:#9c1519;box-shadow:0 0 2px rgba(182,6,57,.8)}body.login div#login form#loginform p.submit input#wp-submit{border-color:#9c1519;background:#9c1519;box-shadow:0 0 5px 1px rgba(30,30,30,.2);text-shadow:none}body.login div#login p#backtoblog a,body.login div#login p#nav a{color:#9c1519}
+/*# sourceMappingURL=login.css.map */

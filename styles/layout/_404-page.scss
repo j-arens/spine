@@ -1,0 +1,22 @@
+body.error404 {
+    .not-found {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 6em 1em;
+
+        form {
+            max-width: 25em;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+        }
+    }
+
+    .not-found__message {
+        font-size: 1.675em;
+    }
+}

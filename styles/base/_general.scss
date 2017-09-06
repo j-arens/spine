@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+    max-width: 1920px;
+    margin: 0 auto;
+    font-smoothing: antialiased;
+    background-color: $color-background-base;
+    color: $color-font-base;
+    font-family: $font-family-base;
+    font-size: 16px;
+    line-height: $base-line-height;
+}
+
+video[autoplay]:not([muted]) {
+  display: none;
+}
+
+img,
+picture {
+  display: block;
+  height: auto;
+  line-height: 2;
+  position: relative;
+  text-align: center;
+  margin: 0;
+  max-width: 100%;
+}
+
+img:before {
+  content: "We're sorry, the image below is broken :(";
+  display: block;
+  margin-bottom: 10px;
+}
+
+img:after {
+  content: "(url: " attr(src) ")";
+  display: block;
+  font-size: 12px;
+}
+
+.screen-reader-response {
+  position: absolute;
+  left: -9999%;
+  visibility: hidden;
+}

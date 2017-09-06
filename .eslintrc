@@ -1,19 +1,21 @@
 {
-  "root": true,
-  "extends": ["eslint:recommended", "plugin:import/warnings"],
-  "globals": {
-    "wp": true
-  },
-  "env": {
-    "es6": true,
-    "amd": true,
-    "browser": true,
-    "jquery": true,
-    "node": true
-  },
-  "rules": {
-    "no-debugger": "warn",
-    "no-console": "warn",
-    "import/extensions": [1, { "js": "never" }]
-  }
+    "root": true,
+    "extends": ["eslint:recommended"],
+    "globals": {
+      "wp": true,
+      "Dpi": true
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "jquery": true,
+      "node": true
+    },
+    "rules": {
+      "no-debugger": "warn",
+      "no-console": "warn"
+    },
+    "parserOptions": {
+        "sourceType": "module"
+    }
 }

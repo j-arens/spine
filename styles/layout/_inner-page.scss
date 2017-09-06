@@ -1,0 +1,61 @@
+body:not(.home).page,
+body.single,
+body.archive {
+
+    .wrap {
+        width: 100%;
+        margin: 0 auto;
+        padding: 6.25em 1em;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .main > article {
+        &::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        ul,
+        dl,
+        ol {
+            padding-left: 2rem;
+            margin-bottom: 1em;
+            list-style: disc;
+        }
+
+        ul,
+        ol {
+            list-style: lower-alpha;
+        }
+
+        li,
+        dt,
+        dd {
+            margin-bottom: initial;
+        }
+    }
+}
+
+@media screen and (min-width: 71.875em) {
+    body:not(.home).page,
+    body.single,
+    body.archive {
+        .wrap {
+            max-width: 84.0625em;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 6.25em 1em;
+        }
+
+        .main {
+            max-width: 46.875em;
+            width: 100%;
+        }
+    }
+}

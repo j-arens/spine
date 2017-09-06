@@ -1,0 +1,11 @@
+body.archive {
+    article.news,
+    article.myparish_messages {
+        padding: 1em;
+        background-color: #ccc;
+
+        &:not(:first-of-type) {
+            margin-top: 2em;
+        }
+    }
+}

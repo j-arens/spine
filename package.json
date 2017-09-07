@@ -28,6 +28,7 @@
     "gulp-watch": "^4.3.11",
     "merge-stream": "^1.0.1",
     "newer": "^0.1.5",
+    "run-sequence": "^2.1.0",
     "vinyl-named": "^1.1.0",
     "webpack": "^1.13.3",
     "webpack-stream": "^3.2.0",

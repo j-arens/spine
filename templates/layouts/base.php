@@ -29,7 +29,7 @@
       </main>
       <?php if (Spine\scripts\php\displaySidebar()) : ?>
         <aside class="sidebar">
-          <?php template_part('partials/sidebar'); ?>
+          <?php get_template_part('partials/sidebar'); ?>
         </aside>
       <?php endif; ?>
     </div>

@@ -26,8 +26,10 @@ const env = {
     dev: argv.dev || true,
     prod: argv.production || false,
     staging: argv.staging || false,
-    devPath: `C:/Users/DPI/Desktop/dev/wordpress/as-dunwoody/wp-content/themes/dpi-spine`,
-    devUrl: 'localhost'
+    devPath: `C:/Users/DPI/Desktop/dev-sites/as-dunwoody/wp-content/themes/dpi-spine`,
+    devUrl: 'localhost',
+    migrateList: ['./**/*', '!./.git', '!node_modules', '!./node_modules/**/*'],
+    watchList: ['./**/*', '!.git', '!node_modules', '!./node_modules/**/*', '!./styles/**/*', '!./scripts/js/source/**/*']
 }
 
 /**
@@ -65,7 +67,7 @@ gulp.task('bsync-reload', () => bsync.reload());
 /**
 * Local deployment
 */
-gulp.task('localDeploy', () => gulp.src(['!node_modules', './**/*'])
+gulp.task('localDeploy', () => gulp.src(env.migrateList, {base: './'})
     .pipe(newer(path.resolve(env.devPath)))
     .pipe(gulp.dest(path.resolve(env.devPath)))
     .pipe(bsync.stream())
@@ -75,16 +77,20 @@ gulp.task('localDeploy', () => gulp.src(['!node_modules', './**/*'])
 * Watch tasks
 */
 gulp.task('watch', function() {
-  // styles
-  gulp.watch('./styles/**/*.scss', ['styles']);
+
+    // styles
+    gulp.watch('./styles/**/*.scss', ['styles']);
 
   // js scripts
-  gulp.watch('./scripts/js/source/**/*.js', ['js', 'single-js']);
+    gulp.watch('./scripts/js/source/!single/**/*.js', ['js']);
+
+    gulp.watch('./scripts/js/source/single/**/*.js', ['single-js']);
 
     // dev dist
     if (env.dev) {
-      gulp.watch(['!node_modules', './**/*'], ['localDeploy']);
+        gulp.watch(env.watchList, ['localDeploy']);
     }
+
 });
 
 /**

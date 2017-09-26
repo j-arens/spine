@@ -47,9 +47,9 @@ gulp.task('styles', () => gulp.src(['./styles/style.scss', './styles/login.scss'
 /**
 * Javascript
 */
-gulp.task('js', () => gulp.src('./scripts/js/source/main.js')
+gulp.task('js', () => gulp.src(['./scripts/js/source/**/*.js', '!./scripts/js/source/single/'])
     .pipe(webpack(require('./webpack.bundle.js')))
-    .pipe(gulp.dest(path.resolve('/scripts/js')))
+    .pipe(gulp.dest(path.resolve('./scripts/js')))
 );
 
 gulp.task('single-js', () => gulp.src('./scripts/js/source/single/**/*.js')
@@ -82,7 +82,7 @@ gulp.task('watch', function() {
     gulp.watch('./styles/**/*.scss', ['styles']);
 
   // js scripts
-    gulp.watch('./scripts/js/source/!single/**/*.js', ['js']);
+    gulp.watch(['./scripts/js/source/**/*.js', '!./scripts/js/source/single/'], ['js']);
 
     gulp.watch('./scripts/js/source/single/**/*.js', ['single-js']);
 

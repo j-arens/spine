@@ -5,57 +5,56 @@ body.archive {
     .wrap {
         width: 100%;
         margin: 0 auto;
-        padding: 6.25em 1em;
+        max-width: 1250px;
+        padding: 80px 2em;
+        background-color: $color-white;
+        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
     }
 
     .main {
         width: 100%;
     }
 
-    .main > article {
-        &::after {
-            content: '';
-            display: table;
-            clear: both;
-        }
+    .main { 
+        article {
+            &::after {
+                content: '';
+                display: table;
+                clear: both;
+            }
 
-        ul,
-        dl,
-        ol {
-            padding-left: 2rem;
-            margin-bottom: 1em;
-            list-style: disc;
-        }
+            ul,
+            dl,
+            ol {
+                padding-left: 2rem;
+                margin-bottom: 1em;
 
-        ul,
-        ol {
-            list-style: lower-alpha;
-        }
+                li + li {
+                    margin-top: 1em;
+                }
+            }
 
-        li,
-        dt,
-        dd {
-            margin-bottom: initial;
-        }
-    }
-}
+            ul {
+                list-style: disc;
 
-@media screen and (min-width: 71.875em) {
-    body:not(.home).page,
-    body.single,
-    body.archive {
-        .wrap {
-            max-width: 84.0625em;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            padding: 6.25em 1em;
-        }
+                ul {
+                    list-style: square;
+                }
+            }
 
-        .main {
-            max-width: 46.875em;
-            width: 100%;
+            ol {
+                list-style: upper-roman;
+
+                ol {
+                    list-style: lower-alpha;
+                }
+            }
+
+            li,
+            dt,
+            dd {
+                margin-bottom: initial;
+            }
         }
     }
 }

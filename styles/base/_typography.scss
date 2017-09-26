@@ -40,7 +40,7 @@ h6 {
 }
 
 p {
-    margin: 0 0 calc($base-spacing / 2);
+    margin: 0 0 $base-spacing / 2;
 }
 
 a {
@@ -51,7 +51,7 @@ a {
     &:hover {
         color: $color-link-hover;
     }
-    
+
     &:focus {
         color: $color-link-hover;
         outline: none;
@@ -70,7 +70,7 @@ blockquote {
     border-left: 2px solid $color-border-base;
     color: lighten($color-font-base, 10%);
     margin: $base-spacing 0;
-    padding-left: calc($base-spacing / 2);
+    padding-left: $base-spacing / 2;
 }
 
 cite {
@@ -80,4 +80,28 @@ cite {
     &::before {
         content: "\2014 \00A0";
     }
+}
+
+strong {
+    font-weight: bold;
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.font-regular {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-black {
+    font-weight: 900;
 }

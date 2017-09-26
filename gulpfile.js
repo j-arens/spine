@@ -39,7 +39,7 @@ gulp.task('styles', () => gulp.src(['./styles/style.scss', './styles/login.scss'
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(nano({discardComments: false, zindex: false, reduceIdents: false}))
+    .pipe(nano({zindex: false, reduceIdents: false}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./'))
 );

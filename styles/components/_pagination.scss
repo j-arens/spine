@@ -1,0 +1,36 @@
+@mixin paginationMenu() {
+    display: flex;
+    justify-content: space-between;
+}
+
+.posts-navigation,
+.pagination-nav {
+    a {
+        display: block;
+    }
+}
+
+.pagination-nav {
+    margin-top: 25px;
+}
+
+.posts-navigation {
+    padding: 0 40px 16px 40px;
+}
+
+@media screen and (min-width: 400px) {
+    .posts-navigation,
+    .pagination-nav {
+        a {
+            display: initial;
+        }
+    }
+
+    .pagination-nav {
+        @include paginationMenu();
+    }
+
+    .posts-navigation {
+        @include paginationMenu();
+    }
+}
